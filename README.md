@@ -132,7 +132,7 @@ Muse her yaştan sanatseverlerin ve sanatçıların her türlü sanat eserini se
   </details>
 
   - **Sprint Notları**:
-    - Proje takibi için ‘Trello’ kullanılmasına karar verilmiştir. 
+    - Proje takibi için `Trello` kullanılmasına karar verilmiştir. 
 
     - Kullanıcı arayüzü tasarımı(UI) için `Figma` kullanılmasına karar verilmiştir.
 
