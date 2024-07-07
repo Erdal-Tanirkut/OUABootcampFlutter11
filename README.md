@@ -2,7 +2,7 @@
 ### **`muse`**
 # Takım ve Ürün Hakkında Bilgilendirme
 ## Takım Üyeleri 
- ## Team Members
+ 
 
   <table>
     <tr>
@@ -111,6 +111,21 @@ Muse her yaştan sanatseverlerin ve sanatçıların her türlü sanat eserini se
       <td style="width: 25%;"><img src="bootcampimages/Sprint1/Screens/detail.png" style="max-width: 100%; height: auto;"></td>
     </tr>
   </table>
+  </details>   
+
+
+  <details>
+    <summary><h3>Sprint 1 - Sprint Board Update Screenshots</h3></summary>
+    <img src="bootcampimages/Sprint1/Trello/Trello1-1.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint1/Trello/Trello1-2.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint1/Trello/Trello1-3.png" style="max-width: 100%; height: auto;">
+  </details>
+
+  <details>
+    <summary><h3>Sprint 1 - Burndown Chart</h3></summary>
+    <img src="bootcampimages/Sprint1/burndownchart1.jpeg" style="max-width: 100%; height: auto;">
+  </details>
+
 
 
 
