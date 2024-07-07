@@ -132,7 +132,7 @@ Muse her yaştan sanatseverlerin ve sanatçıların her türlü sanat eserini se
   </details>
 
   - **Sprint Notları**:
-    - Proje takibi için ‘Trello’ kullanılmasına karar verilmiştir.
+    - Proje takibi için ‘Trello’ kullanılmasına karar verilmiştir. 
 
     - Kullanıcı arayüzü tasarımı(UI) için `Figma` kullanılmasına karar verilmiştir.
 
@@ -143,7 +143,7 @@ Muse her yaştan sanatseverlerin ve sanatçıların her türlü sanat eserini se
     - Backend hizmetleri için `Firebase` kullanılmasına karar verilmiştir.
 
     - Sisteme giriş yöntemi olarak `email ile giriş` ve `Google hesabı ile giriş` yöntemlerinin kullanılmasına karar verilmiştir.
-  - **Sprint için Hikaye Puanı Hedefimiz**: 100 puan
+  - **Sprint için Hikaye Puanı Hedefimiz/Tahminimiz**: 100 puan
   - **Puan Tamamlama Mantığı**: Sprint başına düşen hikaye puanlarının tahmini dağılımı şu şekilde gösterilebilir: ilk sprint(100 puan),ikinci sprint(170 puan), üçüncü sprint (200 puan) . İlk iki sprintteki hedefin üçüncü sprinte göre daha düşük olmasının nedeni bu sprintlerde ekip arkadaşlarımızın final ve bütünleme takvimlerine denk gelmesinden dolayıdır. İlk sprint Backlog’unda bulunan tüm görevler tamamlanmıştır(100 puana ulaşılmıştır.)
 - **Sprint Değerlendirmesi:**
     - Bu sprint için Engincan Backend kısmında sorumluluk alırken Erdal, Enes Kaan ve Elif Güven frontend geliştirme için sorumluluk aldı . Kullanıcı deneyimi ve arayüzü tasarımı Elif Öztürk tarafından yapılmıştır.
