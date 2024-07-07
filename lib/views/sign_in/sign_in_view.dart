@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:muse/main.dart';
 import 'package:muse/views/sign_up/sign_up_view.dart';
 
+import '../explore/explore_view.dart';
+
 class SignInView extends StatefulWidget {
   @override
   _SignInViewState createState() => _SignInViewState();
