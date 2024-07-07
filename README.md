@@ -34,7 +34,7 @@
       </td>
     </tr>
     <tr>
-      <td>Elif Öztürk</td>
+      <td>Elif Güven</td>
       <td>Developer</td>
       <td>
         <a href="https://github.com/elifguv" target="_blank"><img src="bootcampimages/logos/github.png" width="20" height="20"/></a>
