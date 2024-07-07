@@ -1,7 +1,56 @@
   # **Takım & Ürün İsmi**
 ### **`muse`**
 # Takım ve Ürün Hakkında Bilgilendirme
-## Takım Üyeleri  **Erdal Tanırkut** | Scrum Master | [![LinkedIn](https://www.linkedin.com/in/erdal-tanırkut/) [![GitHub]](https://github.com/Erdal-Tanirkut) | | **Elif Güven** | Developer | [![LinkedIn](linkedinsimgesilinki)](https://www.linkedin.com/in/elifguvenn/) [![GitHub](githubsimgesilinki)](https://github.com/elifguv) | | **Elif Öztürk** | - | [![LinkedIn](linkedinsimgesilinki)](https://www.linkedin.com/in/elifozturkk018/) | | **Engincan Çiçek** | Developer | [![LinkedIn](linkedinsimgesilinki)](https://www.linkedin.com/in/engincancicek/) [![GitHub](githubsimgesilinki)](https://github.com/EngincanCicek) | | **Enes Kaan Afacan** | Developer | [![LinkedIn](linkedinsimgesilinki)](https://www.linkedin.com/in/enes-kaan-afacan-a60b32259/) [![GitHub](githubsimgesilinki)](https://github.com/eneskaanafacan) |
+## Takım Üyeleri 
+ ## Team Members
+
+  <table>
+    <tr>
+      <th>İsim</th>
+      <th>Görev</th>
+      <th>İletişim</th>
+    </tr>
+    <tr>
+      <td>Erdal Tanırkut</td>
+      <td>Scrum Master</td>
+      <td>
+        <a href="https://github.com/Erdal-Tanirkut" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/erdal-tanırkut/" target="_blank" ><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+      </td>
+    </tr>
+    <tr>
+      <td>Elif Öztürk</td>
+      <td>Product Owner</td>
+      <td>
+        <a href="https://www.linkedin.com/in/elifozturkk018/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+      </td>
+    </tr>
+    <tr>
+      <td>Engincan Çiçek</td>
+      <td>Developer</td>
+      <td>
+        <a href="https://github.com/EngincanCicek" target="_blank"><img src="ghublink" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/engincancicek/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+      </td>
+    </tr>
+    <tr>
+      <td>Elif Öztürk</td>
+      <td>Developer</td>
+      <td>
+        <a href="https://github.com/elifguv" target="_blank"><img src="Ghublink" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/elifguvenn/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+      </td>
+    </tr>
+    <tr>
+      <td>Enes Kaan Afacan</td>
+      <td>Developer</td>
+      <td>
+        <a href="https://github.com/eneskaanafacan" target="_blank"><img src="Ghublink" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/enes-kaan-afacan-a60b32259/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+      </td>
+    </tr>
+  </tr>
+  </table>
 
 ## Ürün Tanıtımı
 Muse her yaştan sanatseverlerin ve sanatçıların her türlü sanat eserini sergileyebileceği,  hoşuna giden eserleri açık arttırma yoluyla ya da direkt ödeme ile satın alabileceği bir platformdur. Muse olarak amacımız günümüz dünyasında hızına yetişilemeyen dijitalleşme trendini yakalayamamış alanlardan biri olan dijital dönem öncesi sanat eserlerini yediden yetmişe tüm dünya için erişilebilir kılmak bunun yanında genç ya da acemi sanatçıların eserlerini her yaştan sanatseverlere ulaştırabilmek. 
@@ -82,4 +131,3 @@ Muse her yaştan sanatseverlerin ve sanatçıların her türlü sanat eserini se
     - Sonraki sprint için profil sayfası, backend ve frontend arasındaki ara fonksiyonları, açık arttırma ekranı gibi özelliklere odaklanılmasına karar verildi.
 
 
-![image](https://github.com/Erdal-Tanirkut/OUABootcampFlutter11/assets/159000693/7a9df066-c7ca-4ef0-8a3c-99b82378fde6)
