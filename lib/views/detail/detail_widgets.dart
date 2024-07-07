@@ -1,4 +1,6 @@
+// detail_widgets.dart
 import 'package:flutter/material.dart';
+
 class CustomTextBox extends StatelessWidget {
   final String label;
   final bool isTitle;
