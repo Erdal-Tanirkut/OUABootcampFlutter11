@@ -1,26 +1,7 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'logger.dart';
-
-Future<void> main() async {
+void main() {
   runApp(const MyApp());
-
-  // Log messages using the imported functions
-  info('Uygulama başlatıldı.');
-  debug('Değişken değeri: ${1}'); // Assuming you have a variable named 'deger'
-
-  await Firebase.initializeApp();
-
-  final firebaseService = FirebaseService();
-
-  // Rastgele bir post oluştur ve yaz
-  await firebaseService.createAndWriteRandomPost();
-
-  // Rastgele oluşturulan postu oku ve logla
-  await firebaseService.readAndLogPost('post_123'); // Bu ID'yi FirebaseService içindeki `postId` ile eşleştirin.
-
-
 }
 
 class MyApp extends StatelessWidget {
