@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "830286405620",
+    "project_id": "muse0-6debb",
+    "storage_bucket": "muse0-6debb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830286405620:android:c1ec75a5b2fb72dbade3a1",
+        "android_client_info": {
+          "package_name": "com.example.muse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu96V-8sKlsC15DXgfr6lbNacqkN7Y2_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,28 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+import 'firebase_options.dart';
+import 'logger.dart';
+
+Future<void> main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  // Initialize the FirebaseService
+  final firebaseService = FirebaseService();
+
+  // Create and write a random post to Firestore
+  await firebaseService.createAndWriteRandomPost();
+
+
+  // Rastgele oluşturulan postu oku ve loglaID
+  await firebaseService.readAndLogPost('post_635'); // Bu id ile post oku
+
+
+
   runApp(const MyApp());
 }
 
