@@ -14,39 +14,39 @@
       <td>Erdal Tanırkut</td>
       <td>Scrum Master</td>
       <td>
-        <a href="https://github.com/Erdal-Tanirkut" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/erdal-tanırkut/" target="_blank" ><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="https://github.com/Erdal-Tanirkut" target="_blank"><img src="bootcampimages/logos/github.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/erdal-tanırkut/" target="_blank" ><img src="bootcampimages/logos/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
       <td>Elif Öztürk</td>
       <td>Product Owner</td>
       <td>
-        <a href="https://www.linkedin.com/in/elifozturkk018/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="https://www.linkedin.com/in/elifozturkk018/" target="_blank"><img src="bootcampimages/logos/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
       <td>Engincan Çiçek</td>
       <td>Developer</td>
       <td>
-        <a href="https://github.com/EngincanCicek" target="_blank"><img src="ghublink" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/engincancicek/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="https://github.com/EngincanCicek" target="_blank"><img src="bootcampimages/logos/github.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/engincancicek/" target="_blank"><img src="bootcampimages/logos/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
       <td>Elif Öztürk</td>
       <td>Developer</td>
       <td>
-        <a href="https://github.com/elifguv" target="_blank"><img src="Ghublink" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/elifguvenn/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="https://github.com/elifguv" target="_blank"><img src="bootcampimages/logos/github.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/elifguvenn/" target="_blank"><img src="bootcampimages/logos/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
       <td>Enes Kaan Afacan</td>
       <td>Developer</td>
       <td>
-        <a href="https://github.com/eneskaanafacan" target="_blank"><img src="Ghublink" width="20" height="20"/></a>
-        <a href="https://www.linkedin.com/in/enes-kaan-afacan-a60b32259/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="https://github.com/eneskaanafacan" target="_blank"><img src="bootcampimages/logos/github.png" width="20" height="20"/></a>
+        <a href="https://www.linkedin.com/in/enes-kaan-afacan-a60b32259/" target="_blank"><img src="bootcampimages/logos/linkedin.png" width="20" height="20" /></a>
       </td>
     </tr>
   </tr>
@@ -88,10 +88,30 @@ Muse her yaştan sanatseverlerin ve sanatçıların her türlü sanat eserini se
 •  Genel Kullanıcılar: Sanata ilgi duyan ve sanat dünyasında keyifli bir yolculuğa çıkmak isteyen herkes.
 </p>
   </details>
+ <details>
+    <summary><h3>Sprint 1 - Uygulama Ekran Görüntüleri</h3></summary>
+  <table style="width: 100%;">
+    <tr>
+      <td colspan="4" style="text-align: center;"><h2>Giriş sayfaları</h2></td>
+    </tr>
+    <tr>
+      <td style="width: 25%;"><img src="bootcampimages/Sprint1/Screens/sign_in.png" style="max-width: 100%; height: auto;"></td>
+      <td style="width: 25%;"><img src="bootcampimages/Sprint1/Screens/sign_up.png" style="max-width: 100%; height: auto;"></td>
+    </tr>
+    <tr>
+      <td colspan="4" style="text-align: center;"><h2>Sanat eserleri sayfası</h2></td>
+    </tr>
+    <tr>
+      <td style="width: 25%;"><img src="bootcampimages/Sprint1/Screens/explore.png" style="max-width: 100%; height: auto;"></td>
+    </tr>
+    <tr>
+      <td colspan="4" style="text-align: center;"><h2>Eser detay sayfası</h2></td>
+    </tr>
+    <tr>
+      <td style="width: 25%;"><img src="bootcampimages/Sprint1/Screens/detail.png" style="max-width: 100%; height: auto;"></td>
+    </tr>
+  </table>
 
-
-
- 
 
 
   - **Sprint Notları**:
