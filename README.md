@@ -40,7 +40,7 @@ Muse her yaştan sanatseverlerin ve sanatçıların her türlü sanat eserini se
 </p>
   </details>
 
-  ---
+
 
  
 
