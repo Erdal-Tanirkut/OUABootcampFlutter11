@@ -1,107 +1,182 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'detail_viewmodel.dart';
-import 'detail_widgets.dart';
+import '../../models/post.dart';
 
-class ArtworkDetailPage extends StatelessWidget {
-  final String videoId; // Video ID'yi parametre olarak alıyoruz
 
-  ArtworkDetailPage({required this.videoId});
+class ArtworkDetailPage extends StatefulWidget {
+  final Post post;
+
+  ArtworkDetailPage({required this.post});
+
+  @override
+  _ArtworkDetailPageState createState() => _ArtworkDetailPageState();
+}
+
+class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
+  late YoutubePlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId(widget.post.youtubeVideoLink) ?? '',
+      flags: YoutubePlayerFlags(
+        autoPlay: true,
+        mute: false,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => DetailViewModel(videoId: 'd66ACsHlWbc'), // Video ID'yi ViewModel'e geçiriyoruz
-      child: Consumer<DetailViewModel>(
-        builder: (context, viewModel, child) {
-          return DraggableScrollableSheet(
-            initialChildSize: 0.7,
-            minChildSize: 0.5,
-            maxChildSize: 0.9,
-            builder: (BuildContext context, ScrollController scrollController) {
-              return SingleChildScrollView(
-                controller: scrollController,
-                child: Container(
-                  padding: const EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.75, // Height to show part of the underlying page
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Container(
+                width: 60,
+                height: 5,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            Center(
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(
+                  color: Colors.red.shade900,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(
+                  widget.post.title,
+                  style: TextStyle(
                     color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16.0),
-                      topRight: Radius.circular(16.0),
-                    ),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Center(
-                        child: Container(
-                          width: 160,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Lorem Ipsum',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Center(child: CustomTextBox(label: "Digital Illustration", isTitle: false)),
-                      SizedBox(height: 8.0),
-                      Row(
-                        children: [
-                          CustomTextBox(label: "Artist"),
-                          Spacer(),
-                          Text(
-                            "90€",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 24.0,
-                            ),
-                          ),
-                        ],
-                      ),
-                      CustomTextBox(label: "Lorem Ipsum"),
-                      CustomTextBox(label: "Size"),
-                      CustomTextBox(label: "Lorem Ipsum"),
-                      CustomTextBox(label: "Location"),
-                      CustomTextBox(label: "Lorem Ipsum, Istanbul, Turkiye"),
-                      SizedBox(height: 16.0),
-                      CustomTextBox(
-                        label: "Lorem ipsum dolor sit amet consectetur. Dictum etiam duis nulla amet ultricies ultricies...",
-                        isDescription: true,
-                      ),
-                      SizedBox(height: 45.0),
-                      Center(
-                        child: CustomButton(
-                          text: "Contact to Buy",
-                          onPressed: () {},
-                        ),
-                      ),
-                      SizedBox(height: 16.0),
-                      AspectRatio(
-                        aspectRatio: 16 / 9,
-                        child: YoutubePlayer(
-                          controller: viewModel.state.videoController,
-                          showVideoProgressIndicator: true,
-                          progressIndicatorColor: Colors.red,
-                        ),
-                      ),
-                    ],
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              );
-            },
-          );
-        },
+              ),
+            ),
+            SizedBox(height: 8),
+            Center(
+              child: Text(
+                widget.post.tagId.toString(),
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'Artist',
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 16,
+              ),
+            ),
+            Text(
+              "Flutter11", // Example artist name, replace with actual artist data
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'Size',
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 16,
+              ),
+            ),
+            Text(
+              'Lorem Ipsum', // Example size, replace with actual size data
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'Location',
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 16,
+              ),
+            ),
+            Text(
+              'Lorem Ipsum, Istanbul, Turkiye', // Example location, replace with actual location data
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              "90€",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16),
+            Text(
+              widget.post.description, // Example description, replace with actual description
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 14,
+              ),
+            ),
+            SizedBox(height: 16),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  // Contact to Buy action
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                  onPrimary: Colors.red.shade900,
+                  side: BorderSide(color: Colors.red.shade900),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: Text('Contact to Buy'),
+              ),
+            ),
+            SizedBox(height: 16),
+            Expanded(
+              child: YoutubePlayer(
+                controller: _controller,
+                showVideoProgressIndicator: true,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../firebase_dao.dart';
+import '../../models/post.dart';
 import '../detail/detail_view.dart';
 import 'explore_viewmodel.dart';
 
@@ -68,38 +70,61 @@ class ExplorePage extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: GridView.builder(
-                    padding: const EdgeInsets.all(8.0),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 8.0,
-                      mainAxisSpacing: 8.0,
-                    ),
-                    itemCount: 6,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            isScrollControlled: true,
-                            builder: (BuildContext context) {
-                              return ArtworkDetailPage(videoId: 'iLnmTe5Q2Qw'); // Örnek video kimliği
-                            },
-                          );
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(15.0),
+                  child: StreamBuilder<List<Post>>(
+                    stream: FirebaseDao().readAllPosts(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        final posts = snapshot.data!;
+                        return GridView.builder(
+                          padding: const EdgeInsets.all(8.0),
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 8.0,
+                            mainAxisSpacing: 8.0,
                           ),
-                          child: Center(
-                            child: Text(
-                              'Lorem ipsum',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                      );
+                          itemCount: posts.length,
+                          itemBuilder: (context, index) {
+                            final post = posts[index];
+                            return GestureDetector(
+                              onTap: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  builder: (BuildContext context) {
+                                    return ArtworkDetailPage(post: post);
+                                  },
+                                );
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.network(
+                                      post.image.imageUrl,
+                                      fit: BoxFit.cover,
+                                      height: 100,
+                                      width: 100,
+                                    ),
+                                    SizedBox(height: 8),
+                                    Text(
+                                      post.title,
+                                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      } else if (snapshot.hasError) {
+                        return Center(child: Text('Error: ${snapshot.error}'));
+                      } else {
+                        return Center(child: CircularProgressIndicator());
+                      }
                     },
                   ),
                 ),
