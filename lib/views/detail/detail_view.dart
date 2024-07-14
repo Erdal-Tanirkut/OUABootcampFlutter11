@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../../models/post.dart';
 
-
 class ArtworkDetailPage extends StatefulWidget {
   final Post post;
 
@@ -25,6 +24,13 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
         mute: false,
       ),
     );
+
+    _controller.addListener(() {
+      if (_controller.value.playerState == PlayerState.ended) {
+        _controller.seekTo(Duration.zero);
+        _controller.play();
+      }
+    });
   }
 
   @override
@@ -95,7 +101,7 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
               ),
             ),
             Text(
-              "Flutter11", // Example artist name, replace with actual artist data
+              'Flutter11', // Example artist name, replace with actual artist data
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 18,
@@ -136,7 +142,7 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
             ),
             SizedBox(height: 8),
             Text(
-              "90€",
+              '90€',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 22,

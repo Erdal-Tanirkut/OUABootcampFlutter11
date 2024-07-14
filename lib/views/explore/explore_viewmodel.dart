@@ -1,43 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:muse/firebase_dao.dart';
-import 'package:muse/models/post.dart';
-import 'explore_state.dart';
+import '../../models/post.dart';
 
-class ExploreViewModel extends ChangeNotifier {
-  final FirebaseDao _firebaseDao = FirebaseDao();
-  ExploreViewModelState _state;
+class ExploreViewModel with ChangeNotifier {
+  TextEditingController searchController = TextEditingController();
+  String _searchQuery = '';
+  List<String> _selectedCategories = [];
 
-  ExploreViewModel()
-      : _state = ExploreViewModelState(
-    searchController: TextEditingController(),
-    searchQuery: '',
-  );
-
-  ExploreViewModelState get state => _state;
+  String get searchQuery => _searchQuery;
+  List<String> get selectedCategories => _selectedCategories;
 
   void updateSearchQuery(String query) {
-    _state = ExploreViewModelState(
-      searchController: _state.searchController,
-      searchQuery: query,
-      posts: _state.posts,
-    );
+    _searchQuery = query;
     notifyListeners();
   }
 
-  void fetchPosts() {
-    _firebaseDao.readAllPosts().listen((posts) {
-      _state = ExploreViewModelState(
-        searchController: _state.searchController,
-        searchQuery: _state.searchQuery,
-        posts: posts,
-      );
-      notifyListeners();
-    });
+  void updateSelectedCategory(String category) {
+    if (_selectedCategories.contains(category)) {
+      _selectedCategories.remove(category); // Deselect category if it's already selected
+    } else {
+      _selectedCategories.add(category); // Select new category
+    }
+    notifyListeners();
   }
 
-  @override
-  void dispose() {
-    _state.searchController.dispose();
-    super.dispose();
+  List<Post> filterPosts(List<Post> posts) {
+    if (_searchQuery.isNotEmpty) {
+      posts = posts.where((post) => post.title.contains(_searchQuery)).toList();
+    }
+    if (_selectedCategories.isNotEmpty) {
+      posts = posts.where((post) => _selectedCategories.contains(post.tagId.tagId)).toList();
+    }
+    return posts;
   }
 }

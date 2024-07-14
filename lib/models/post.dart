@@ -1,5 +1,4 @@
 import 'package:muse/models/tag.dart';
-
 import 'image.dart';
 
 class Post {
@@ -24,7 +23,6 @@ class Post {
   });
 
   factory Post.fromJson(Map<String, dynamic> json) {
-    // Validate required fields
     if (json['postId'] == null ||
         json['title'] == null ||
         json['description'] == null ||
@@ -35,10 +33,7 @@ class Post {
       throw ArgumentError('Missing required fields in JSON');
     }
 
-    // Handle nested object (Tag)
     final tag = Tag.fromJson(json['tagId'] as Map<String, dynamic>);
-
-    // Handle potential nested object (Image) - Assuming Image has fromJson
     final image = Image.fromJson(json['image'] as Map<String, dynamic>);
 
     return Post(
@@ -57,10 +52,10 @@ class Post {
     'postId': postId,
     'title': title,
     'description': description,
-    'tagId': tagId.toJson(), // Call toJson on nested Tag
+    'tagId': tagId.toJson(),
     'storageId': storageId,
     'youtubeVideoLink': youtubeVideoLink,
     'likeCount': likeCount,
-    'image': image.toJson(), // Call toJson on nested Image (assuming available)
+    'image': image.toJson(),
   };
 }

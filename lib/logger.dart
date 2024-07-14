@@ -9,6 +9,15 @@ class FirebaseService {
   final CollectionReference postsCollection =
   FirebaseFirestore.instance.collection('posts'); // Replace with your collection name
 
+  // List of predefined tags
+  final List<Tag> predefinedTags = [
+    Tag(tagId: 'Sculpture', postIds: []),
+    Tag(tagId: 'Painting', postIds: []),
+    Tag(tagId: 'Digital Illustration', postIds: []),
+    Tag(tagId: 'portre', postIds: []),
+    // Add more tags as needed
+  ];
+
   // Write a Post to Firestore
   Future<void> writePost(Post post) async {
     try {
@@ -47,12 +56,15 @@ class FirebaseService {
     final random = Random();
     final postId = 'post_${random.nextInt(1000)}'; // Random post ID
 
+    // Select a random tag from the predefined tags
+    final randomTag = predefinedTags[random.nextInt(predefinedTags.length)];
+
     // Create a random post
     final post = Post(
       postId: postId,
       title: 'Rastgele Başlık ${random.nextInt(100)}',
       description: 'Bu rastgele bir içeriğe sahip bir post.',
-      tagId: Tag(tagId: 'tag_${random.nextInt(10)}'),
+      tagId: randomTag,
       storageId: 'storage_${random.nextInt(1000)}',
       youtubeVideoLink: 'https://www.youtube.com/shorts/XGdIpgQOSNc',
       likeCount: random.nextInt(100),

@@ -6,6 +6,8 @@ import '../detail/detail_view.dart';
 import 'explore_viewmodel.dart';
 
 class ExplorePage extends StatelessWidget {
+  final List<String> categories = ['Sculpture', 'Painting', 'Digital Illustration', 'Photography', 'Mixed Media', 'Drawing', 'Printmaking', 'Ceramics'];
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -22,7 +24,7 @@ class ExplorePage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
-                    controller: viewModel.state.searchController,
+                    controller: viewModel.searchController,
                     onChanged: (value) {
                       viewModel.updateSearchQuery(value);
                     },
@@ -52,21 +54,28 @@ class ExplorePage extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Categories',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.filter_list),
-                          SizedBox(width: 8),
-                          Icon(Icons.sort),
-                        ],
-                      ),
-                    ],
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: categories.map((category) {
+                        final isSelected = viewModel.selectedCategories.contains(category);
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                          child: ChoiceChip(
+                            label: Text(category),
+                            selected: isSelected,
+                            onSelected: (_) {
+                              viewModel.updateSelectedCategory(category);
+                            },
+                            selectedColor: Colors.red.shade900,
+                            backgroundColor: Colors.white,
+                            labelStyle: TextStyle(
+                              color: isSelected ? Colors.white : Colors.black,
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
                   ),
                 ),
                 Expanded(
@@ -74,7 +83,7 @@ class ExplorePage extends StatelessWidget {
                     stream: FirebaseDao().readAllPosts(),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        final posts = snapshot.data!;
+                        final posts = viewModel.filterPosts(snapshot.data!);
                         return GridView.builder(
                           padding: const EdgeInsets.all(8.0),
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -91,6 +100,7 @@ class ExplorePage extends StatelessWidget {
                                   context: context,
                                   isScrollControlled: true,
                                   builder: (BuildContext context) {
+                                    print(post.tagId);
                                     return ArtworkDetailPage(post: post);
                                   },
                                 );
