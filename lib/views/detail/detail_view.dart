@@ -164,8 +164,8 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
                   // Contact to Buy action
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                  onPrimary: Colors.red.shade900,
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.red.shade900,
                   side: BorderSide(color: Colors.red.shade900),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
