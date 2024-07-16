@@ -24,7 +24,7 @@ class _SignInViewState extends State<SignInView> {
             children: [
               IconButton(
                 alignment: Alignment.topLeft,
-                icon: Icon(Icons.arrow_back, color: Colors.red),
+                icon: Icon(Icons.arrow_back, color: Color(0xFFB71C1C)),
                 onPressed: () {
                   // Navigate to onboarding
                 },
@@ -86,14 +86,15 @@ class _SignInViewState extends State<SignInView> {
               SizedBox(height: 24),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
+                  backgroundColor: Color(0xFFB71C1C),
                   padding: EdgeInsets.symmetric(vertical: 16),
                 ),
                 onPressed: () {
                   // Implement sign-in logic
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (context) => ExplorePage(),),
+                      builder: (context) => ExplorePage(),
+                    ),
                   );
                 },
                 child: Text(
@@ -115,7 +116,7 @@ class _SignInViewState extends State<SignInView> {
                       TextSpan(
                         text: 'Sign up',
                         style: const TextStyle(
-                          color: Colors.red,
+                          color: Color(0xFFB71C1C),
                           fontWeight: FontWeight.bold,
                         ),
                         recognizer: TapGestureRecognizer()

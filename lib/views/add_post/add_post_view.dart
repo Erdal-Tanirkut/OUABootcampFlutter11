@@ -25,13 +25,13 @@ class _AddPostViewState extends State<AddPostView> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, color: Color(0xFFB71C1C)),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text('Add Work'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.add),
+            icon: const Icon(Icons.add, color: Color(0xFFB71C1C)),
             onPressed: () {
               final state = Provider.of<AddPostState>(context, listen: false);
               if (state.formKey.currentState!.validate()) {
@@ -51,7 +51,7 @@ class _AddPostViewState extends State<AddPostView> {
               children: <Widget>[
                 GestureDetector(
                   onTap: () async {
-                    await state.pickImage();
+                    await state.pickImage(context);
                   },
                   child: Container(
                     height: 150,

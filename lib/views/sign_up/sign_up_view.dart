@@ -22,7 +22,7 @@ class _SignUpViewState extends State<SignUpView> {
             children: [
               IconButton(
                 alignment: Alignment.topLeft,
-                icon: Icon(Icons.arrow_back, color: Colors.red),
+                icon: Icon(Icons.arrow_back, color: Color(0xFFB71C1C)),
                 onPressed: () {
                   Navigator.pop(context); // Navigate to the previous screen
                 },
@@ -87,7 +87,7 @@ class _SignUpViewState extends State<SignUpView> {
               SizedBox(height: 24),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
+                  backgroundColor: Color(0xFFB71C1C),
                   padding: EdgeInsets.symmetric(vertical: 16),
                 ),
                 onPressed: () {
@@ -112,7 +112,7 @@ class _SignUpViewState extends State<SignUpView> {
                       TextSpan(
                         text: 'Sign in',
                         style: const TextStyle(
-                          color: Colors.red,
+                          color: Color(0xFFB71C1C),
                           fontWeight: FontWeight.bold,
                         ),
                         recognizer: TapGestureRecognizer()

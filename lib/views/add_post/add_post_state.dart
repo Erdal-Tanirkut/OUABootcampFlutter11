@@ -6,17 +6,43 @@ class AddPostState with ChangeNotifier {
   final ImagePicker _picker = ImagePicker();
   XFile? imageFile;
 
-  Future<void> pickImage() async {
+  Future<void> pickImage(BuildContext context) async {
+    final ImageSource? source = await _showImageSourceDialog(context);
+    if (source == null)
+      return; 
+
     try {
-      final XFile? selectedImage =
-          await _picker.pickImage(source: ImageSource.gallery);
+      final XFile? selectedImage = await _picker.pickImage(source: source);
       if (selectedImage != null) {
         imageFile = selectedImage;
         notifyListeners();
       }
     } catch (e) {
-      print("Resim alma başarili olamadi: $e");
+      print("Failed to pick image: $e");
     }
+  }
+
+  Future<ImageSource?> _showImageSourceDialog(BuildContext context) async {
+    return showModalBottomSheet<ImageSource>(
+      context: context,
+      builder: (context) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ListTile(
+              leading: const Icon(Icons.camera_alt),
+              title: const Text('Take a picture'),
+              onTap: () => Navigator.of(context).pop(ImageSource.camera),
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo_library),
+              title: const Text('Choose from gallery'),
+              onTap: () => Navigator.of(context).pop(ImageSource.gallery),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   final nameController = TextEditingController();
