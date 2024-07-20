@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:muse/views/add_post/add_post_state.dart';
-import 'package:muse/views/add_post/add_post_view.dart';
+import 'package:muse/views/my_works/my_works_view.dart';
 
 void main() {
-  runApp(TestApp()); //testing add_post screen
+  runApp(MyApp());
 }
 
-final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-class TestApp extends StatelessWidget {
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Test Add Post Page',
-      navigatorKey: navigatorKey,
-      home: ChangeNotifierProvider(
-        create: (_) => AddPostState(),
-        child: AddPostView(),
+      title: 'Artwork App',
+      theme: ThemeData(
+        primaryColor: const Color(0xFFB71C1C),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      home: MyWorksPage(),
     );
   }
 }
