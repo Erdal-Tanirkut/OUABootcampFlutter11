@@ -1,9 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:muse/views/sign_in/sign_in_view.dart';
 import 'firebase_options.dart';
 import 'logger.dart'; // Logger fonksiyonları burada tanımlı olmalı
-import 'models/tag.dart';
+import 'views/sign_in/sign_in_state.dart'; // SignInState için doğru import
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,15 +30,14 @@ Future<void> main() async {
     warning('Failed to sign in user');
   }*/
 
-
   //Sign out the current user
   //await firebaseService.signOutUser();
 
   // Create and write a random post to Firestore
-  //await firebaseService.createAndWriteRandomPost();
+  await firebaseService.createAndWriteRandomPost();
 
   // Read and log a post
-  //await firebaseService.readAndLogPost('post_141'); // Replace with actual post ID if available
+  // Replace with actual post ID if available
 
   // Create a new Tag and add to Firestore TODO buradan yeni tag ler yaratılabilir
   //final newTag = Tag(tagId: 'NewTag', postIds: []);
@@ -47,7 +45,6 @@ Future<void> main() async {
 
   // Read and log all tags
   //await firebaseService.readAndLogAllTags();
-
 
   // Read and log posts by Tag ID
   //await firebaseService.readAndLogPostsByTagId('NewTag');
@@ -65,7 +62,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SignInView(),
+      home: SignInState(), // SignInState ana sayfa olarak ayarlandı
     );
   }
 }

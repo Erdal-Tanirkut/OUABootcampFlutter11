@@ -85,7 +85,7 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
             SizedBox(height: 8),
             Center(
               child: Text(
-                widget.post.tagId.toString(),
+                widget.post.tagId.tagId.toString(),
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 16,
