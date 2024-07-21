@@ -212,10 +212,10 @@ Muse her yaştan sanatseverlerin ve sanatçıların her türlü sanat eserini se
 
   <details>
     <summary><h3>Sprint 2 - Sprint Board ekran görüntüleri</h3></summary>
-    <img src="bootcampimages/Sprint2/Trello/.Trello2-1.png.icloud" style="max-width: 100%; height: auto;">
-    <img src="bootcampimages/Sprint2/Trello/.Trello2-2.png.icloud" style="max-width: 100%; height: auto;">
-    <img src="bootcampimages/Sprint2/Trello/.Trello2-3.png.icloud" style="max-width: 100%; height: auto;">
-  <img src="bootcampimages/Sprint2/Trello/.Trello2-4.png.icloud" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint2/Trello/Trello2-1.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint2/Trello/Trello2-2.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint2/Trello/Trello2-3.png" style="max-width: 100%; height: auto;">
+  <img src="bootcampimages/Sprint2/Trello/Trello2-4.png" style="max-width: 100%; height: auto;">
   </details>
 
   <details>
