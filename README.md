@@ -241,7 +241,7 @@ Muse her yaştan sanatseverlerin ve sanatçıların her türlü sanat eserini se
 
         
 - **Sprint için Hikaye Puanı Hedefimiz/Tahminimiz**: 170 puan
-- **Puan Tamamlama Mantığı**: Sprint başına düşen hikaye puanlarının tahmini dağılımı şu şekilde gösterilebilir: ilk sprint(100 puan),ikinci sprint(170 puan), üçüncü sprint (200 puan) . İlk sprint Backlog’unda bulunan tüm görevler ve ek işler tamamlanmıştır(207 puana ulaşılmıştır.)
+- **Puan Tamamlama Mantığı**: Sprint başına düşen hikaye puanlarının tahmini dağılımı şu şekilde gösterilebilir: ilk sprint(100 puan),ikinci sprint(170 puan), üçüncü sprint (200 puan) . Sprint 2 Backlog’unda bulunan tüm görevler ve ek işler tamamlanmıştır(207 puana ulaşılmıştır.)
 - **Sprint Değerlendirmesi:**
     - Bu sprint için Engincan Backend kısmında sorumluluk alırken Erdal, Enes Kaan ve Elif Güven frontend geliştirme için sorumluluk aldı .Kullanıcı deneyimi ve arayüzü tasarımı Elif Öztürk tarafından yapılmıştır.
 
@@ -257,7 +257,7 @@ Muse her yaştan sanatseverlerin ve sanatçıların her türlü sanat eserini se
 
     - Yazılım konusundaki görev dağılımı önceki sprintin aksine verimsiz olduğu saptanmış ve bunun asıl nedeninin iletişim eksikliği olduğu kanısına varılmıştır.
 
-    - Açık arttırma sayfası için yapılan argenin yeterli olmadığına ve 3.sprintin ilk günleri içerisinde arge dosyasında revizeye gidilmesi ve özelliğin durumunun hızlıca oylanmasına karar verilmiştir.
+    - Açık arttırma sayfası için yapılan argenin yeterli olmadığına, 3.sprintin ilk günleri içerisinde arge dosyasında revizeye gidilmesi ve özelliğin durumunun hızlıca oylanmasına karar verilmiştir.
 
     - Firebase auth şifremi unuttum google ile giriş özelliklerinin eklenmesi kararlaştırıldı.
 
