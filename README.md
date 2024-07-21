@@ -231,39 +231,37 @@ Muse her yaştan sanatseverlerin ve sanatçıların her türlü sanat eserini se
   </details>
 
     - **Sprint Notları**:
-        - Proje takibi için `Trello` kullanılmasına karar verilmiştir.
+        - Görev yoğunluğu ve zaman kısıtları göz önüne alınarak `Açık arttırma özelliğinin` bu sprintte yapılacak arge sonucu eklenip eklenmeyeceğine karar verileceği belirlenmiştir.
 
-        - Kullanıcı arayüzü tasarımı(UI) için `Figma` kullanılmasına karar verilmiştir.
+        - Bu sprintte post ekleme, post beğenme gibi `Sosyal medya özelliklerine` odaklanılmasına karar verilmiştir.
 
-        - State Management için `Provider` kullanılmasına karar verilmiştir.
+        - Açık arttırma sayfası ArGesi sonucu yapılan oylamada özelliğin uygulamaya eklenmesi konusunda `Karar Verilememiştir` 3. Sprintin ilk toplantısında tekrardan bir oylama yapılacaktır.
 
-        - Proje mimarisi `MVVM` olarak kararlaştırılmıştır.
+        - Post ekleme ekranında fotoğraf seçmek için `flutter image_picker` kullanılması kararlaştırılmıştır.
 
-        - Backend hizmetleri için `Firebase` kullanılmasına karar verilmiştir.
-
-        - Sisteme giriş yöntemi olarak `email ile giriş` ve `Google hesabı ile giriş` yöntemlerinin kullanılmasına karar verilmiştir.
-    - **Sprint için Hikaye Puanı Hedefimiz/Tahminimiz**: 100 puan
-    - **Puan Tamamlama Mantığı**: Sprint başına düşen hikaye puanlarının tahmini dağılımı şu şekilde gösterilebilir: ilk sprint(100 puan),ikinci sprint(170 puan), üçüncü sprint (200 puan) . İlk iki sprintteki hedefin üçüncü sprinte göre daha düşük olmasının nedeni bu sprintlerde ekip arkadaşlarımızın final ve bütünleme takvimlerine denk gelmesinden dolayıdır. İlk sprint Backlog’unda bulunan tüm görevler tamamlanmıştır(100 puana ulaşılmıştır.)
+        
+- **Sprint için Hikaye Puanı Hedefimiz/Tahminimiz**: 170 puan
+- **Puan Tamamlama Mantığı**: Sprint başına düşen hikaye puanlarının tahmini dağılımı şu şekilde gösterilebilir: ilk sprint(100 puan),ikinci sprint(170 puan), üçüncü sprint (200 puan) . İlk sprint Backlog’unda bulunan tüm görevler ve ek işler tamamlanmıştır(207 puana ulaşılmıştır.)
 - **Sprint Değerlendirmesi:**
-    - Bu sprint için Engincan Backend kısmında sorumluluk alırken Erdal, Enes Kaan ve Elif Güven frontend geliştirme için sorumluluk aldı . Kullanıcı deneyimi ve arayüzü tasarımı Elif Öztürk tarafından yapılmıştır.
+    - Bu sprint için Engincan Backend kısmında sorumluluk alırken Erdal, Enes Kaan ve Elif Güven frontend geliştirme için sorumluluk aldı .Kullanıcı deneyimi ve arayüzü tasarımı Elif Öztürk tarafından yapılmıştır.
 
-    - Bu sprrintte en çok zorlandığımız kısımlardan biri takım üyelerinin final sınavları sürecinde yeteri kadar iyi organize olup toplanılamamasıdırı.
+    - Bu sprrintte en çok zorlandığımız kısım backend ile frontend arasındaki bağlantıyı kurarken karşımıza çıkan buglardı.
 
-    - Ek olarak çalışma zamanımızın normal sprintlerden daha az olduğu bu sprintin görevlendirmelerinin arasına uygulamanın bütün backend görevlerinin konulmasından dolayı backendle ilgili görevlerin yetiştirilmesinde takım olarak zorlandığımız bir başlık oldu.
+    - Bunun yanında developerlar arasında görev dağılımının ,yapılan toplantı sayısı planlanandan az olduğu için, efektif bir şekilde yapılamadığı söylenebilir.
 
-    - Sprinte başlamadan önce state management ve backend servisleriyle ilgili bir araştırma ve bilgi pekiştirme süreci geçirildi. Bu süreç sonunda provider ve firebase hakkında derinlemesine bilgi edinildi
+    - Açık arttırma sayfası için yapılan arge sırasında firebase, real time sistemler ve online chat odaları üzerine derinlemesine araştırmalar yapılmıştır.
 
-    - Özetlemek gerekirse kısıtlı zaman dahilinde tüm takım olarak elimizden gelenin en iyisini yaptığımız söylenebilir.
+    - Sonuç olarak 2. sprint için verilen zaman dahilinde tüm takım olarak elimizden gelenin en iyisini yaptığımız ve tüm görevleri yetiştirdiğimiz söylenebilir.
 - **Sprint Retrospectifi:**
-    - Gelecek sprintler için backend görevlerini daha küçük parçaya bölme kararı alındı.
+    - Gelecek sprint için development görevlerinin çok daha verimli dağıtılması adına tüm iş yükünün müsaitlik durumları da göz önüne alınarak 3 parçaya ayırılması kararlaştırılmıştır.
 
-  -Yazılım konusundaki görev dağılımı verimli bulunup backend iş yükünün aşırı artması durumunda frontend developerların backend işlerine yardımcı olacağı konusunda fikir birliğine varıldı .
+    - Yazılım konusundaki görev dağılımı önceki sprintin aksine verimsiz olduğu saptanmış ve bunun asıl nedeninin iletişim eksikliği olduğu kanısına varılmıştır.
 
-    - Sonraki sprintte toplantı günlerinin belirli günlere sabitlenmesi kararı alındı.
+    - Açık arttırma sayfası için yapılan argenin yeterli olmadığına ve 3.sprintin ilk günleri içerisinde arge dosyasında revizeye gidilmesi ve özelliğin durumunun hızlıca oylanmasına karar verilmiştir.
 
-    - State management ve Backend için kullanılan servislerin amacımıza uygun ve verimli olduğu sonucuna varılıp bu teknolojilerle yola devam etme kararı alındı.
+    - Firebase auth şifremi unuttum google ile giriş özelliklerinin eklenmesi kararlaştırıldı.
 
-    - Sonraki sprint için profil sayfası, backend ve frontend arasındaki ara fonksiyonları, açık arttırma ekranı gibi özelliklere odaklanılmasına karar verildi.
+    - Sonraki sprint için yorum yapma,beğenme/kaydetme, my works sayfasına filreleme, açık arttırma sayfası gibi özelliklere odaklanılmasına karar verildi.
 
 
 
