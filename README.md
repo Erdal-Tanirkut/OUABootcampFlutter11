@@ -211,21 +211,23 @@ Muse her yaştan sanatseverlerin ve sanatçıların her türlü sanat eserini se
   </details>   
 
   <details>
-    <summary><h3>Sprint 1 - Sprint Board ekran görüntüleri</h3></summary>
-    <img src="bootcampimages/Sprint1/Trello/Trello1-1.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampimages/Sprint1/Trello/Trello1-2.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampimages/Sprint1/Trello/Trello1-3.png" style="max-width: 100%; height: auto;">
+    <summary><h3>Sprint 2 - Sprint Board ekran görüntüleri</h3></summary>
+    <img src="bootcampimages/Sprint2/Trello/.Trello2-1.png.icloud" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint2/Trello/.Trello2-2.png.icloud" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint2/Trello/.Trello2-3.png.icloud" style="max-width: 100%; height: auto;">
+  <img src="bootcampimages/Sprint2/Trello/.Trello2-4.png.icloud" style="max-width: 100%; height: auto;">
   </details>
 
   <details>
-    <summary><h3>Sprint 1 - Burndown Chart</h3></summary>
-    <img src="bootcampimages/Sprint1/burndownchart1.jpeg" style="max-width: 100%; height: auto;">
+    <summary><h3>Sprint 2 - Burndown Chart</h3></summary>
+    <img src="bootcampimages/Sprint2/burntdown_chart2.png" style="max-width: 100%; height: auto;">
   </details>
   <details>
-    <summary><h3>Sprint 1 - Günlük Scrumlar</h3></summary>
-    <img src="bootcampimages/Sprint1/DailyScrum/dailyscrum1-1.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampimages/Sprint1/DailyScrum/dailyscrum1-2.png" style="max-width: 100%; height: auto;">
-    <img src="bootcampimages/Sprint1/DailyScrum/dailyscrum1-3.png" style="max-width: 100%; height: auto;">
+    <summary><h3>Sprint 2 - Günlük Scrumlar</h3></summary>
+    <img src="bootcampimages/Sprint2/Daily Scrums/daily_scrum2-1.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint2/Daily Scrums/daily_scrum2-2.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint2/Daily Scrums/daily_scrum2-3.png" style="max-width: 100%; height: auto;">
+  <img src="bootcampimages/Sprint2/Daily Scrums/daily_scrum2-4.png" style="max-width: 100%; height: auto;">
   </details>
 
     - **Sprint Notları**:
