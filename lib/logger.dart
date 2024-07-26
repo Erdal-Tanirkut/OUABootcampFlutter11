@@ -86,7 +86,7 @@ class FirebaseService {
       image: ImageM(
           storageId: 'image_${random.nextInt(1000)}',
           imageUrl:
-          'https://i.etsystatic.com/9001843/r/il/86a001/4540195690/il_1588xN.4540195690_rghf.jpg'),
+          'https://i.etsystatic.com/9001843/r/il/86a001/4540195690/il_1588xN.4540195690_rghf.jpg', url: '', storagePath: ''),
     );
 
     await writePost(post);

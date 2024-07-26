@@ -101,7 +101,7 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
               ),
             ),
             Text(
-              'Flutter11', // Example artist name, replace with actual artist data
+              widget.post.title, // Example artist name, replace with actual artist data
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 18,

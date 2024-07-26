@@ -115,7 +115,7 @@ class ExplorePage extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Image.network(
-                                      post.image.imageUrl,
+                                      post.image.url,
                                       fit: BoxFit.cover,
                                       height: 100,
                                       width: 100,

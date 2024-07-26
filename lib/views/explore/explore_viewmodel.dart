@@ -28,7 +28,7 @@ class ExploreViewModel with ChangeNotifier {
       posts = posts.where((post) => post.title.contains(_searchQuery)).toList();
     }
     if (_selectedCategories.isNotEmpty) {
-      posts = posts.where((post) => _selectedCategories.contains(post.tagId)).toList();
+      posts = posts.where((post) => _selectedCategories.contains(post.tagId.tagId)).toList();
     }
     return posts;
   }

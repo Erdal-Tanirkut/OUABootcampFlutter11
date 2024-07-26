@@ -8,8 +8,7 @@ class AddPostState with ChangeNotifier {
 
   Future<void> pickImage(BuildContext context) async {
     final ImageSource? source = await _showImageSourceDialog(context);
-    if (source == null)
-      return;
+    if (source == null) return;
 
     try {
       final XFile? selectedImage = await _picker.pickImage(source: source);
@@ -47,21 +46,13 @@ class AddPostState with ChangeNotifier {
 
   final nameController = TextEditingController();
   final aboutWorkController = TextEditingController();
-  final artistController = TextEditingController();
   final typeController = TextEditingController();
-  final sizeController = TextEditingController();
-  final locationController = TextEditingController();
-  final priceController = TextEditingController();
   final linkController = TextEditingController();
 
   void dispose() {
     nameController.dispose();
     aboutWorkController.dispose();
-    artistController.dispose();
     typeController.dispose();
-    sizeController.dispose();
-    locationController.dispose();
-    priceController.dispose();
     linkController.dispose();
     super.dispose();
   }

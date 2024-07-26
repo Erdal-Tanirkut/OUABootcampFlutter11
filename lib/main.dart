@@ -34,7 +34,7 @@ Future<void> main() async {
   //await firebaseService.signOutUser();
 
   // Create and write a random post to Firestore
-  await firebaseService.createAndWriteRandomPost();
+  //await firebaseService.createAndWriteRandomPost();
 
   // Read and log a post
   // Replace with actual post ID if available

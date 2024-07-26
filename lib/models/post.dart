@@ -10,7 +10,7 @@ class Post {
   final String storageId;
   final String youtubeVideoLink;
   final int likeCount;
-  final ImageM image; // This is just ID, with this id you can read image from firebaseDAO class (as .webp)
+  final ImageM image;
 
   Post({
     required this.userID,
