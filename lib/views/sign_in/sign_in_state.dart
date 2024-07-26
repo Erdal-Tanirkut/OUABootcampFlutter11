@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'sign_in_viewmodel.dart';
 import 'sign_in_view.dart';
 
-
 class SignInState extends StatefulWidget {
   @override
   _SignInStateState createState() => _SignInStateState();

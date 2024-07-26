@@ -9,7 +9,7 @@ class AddPostState with ChangeNotifier {
   Future<void> pickImage(BuildContext context) async {
     final ImageSource? source = await _showImageSourceDialog(context);
     if (source == null)
-      return; 
+      return;
 
     try {
       final XFile? selectedImage = await _picker.pickImage(source: source);

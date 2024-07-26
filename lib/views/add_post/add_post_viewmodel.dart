@@ -5,7 +5,7 @@ class AddPostViewModel {
 
   AddPostViewModel({required this.state});
 
-  void submitPost() {
+  Future<void> submitPost() async {
     //Sending post data
     print("Submit post with image path: ${state.imageFile?.path}");
   }

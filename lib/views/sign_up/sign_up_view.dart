@@ -1,6 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:muse/views/sign_in/sign_in_view.dart';
+import 'package:provider/provider.dart';
+import '../sign_in/sign_in_state.dart';
+import '../sign_in/sign_in_view.dart';
+import 'sign_up_viewmodel.dart';
 
 class SignUpView extends StatefulWidget {
   @override
@@ -12,6 +15,8 @@ class _SignUpViewState extends State<SignUpView> {
 
   @override
   Widget build(BuildContext context) {
+    final signUpViewModel = Provider.of<SignUpViewModel>(context);
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -41,6 +46,7 @@ class _SignUpViewState extends State<SignUpView> {
               ),
               SizedBox(height: 32),
               TextField(
+                onChanged: (value) => signUpViewModel.setName(value),
                 decoration: InputDecoration(
                   labelText: 'Name',
                   hintText: 'Enter your name',
@@ -49,6 +55,7 @@ class _SignUpViewState extends State<SignUpView> {
               ),
               SizedBox(height: 16),
               TextField(
+                onChanged: (value) => signUpViewModel.setEmail(value),
                 decoration: InputDecoration(
                   labelText: 'Email',
                   hintText: 'example@gmail.com',
@@ -57,14 +64,13 @@ class _SignUpViewState extends State<SignUpView> {
               ),
               SizedBox(height: 16),
               TextField(
+                onChanged: (value) => signUpViewModel.setPassword(value),
                 decoration: InputDecoration(
                   labelText: 'Password',
                   border: OutlineInputBorder(),
                   suffixIcon: IconButton(
                     icon: Icon(
-                      _isPasswordVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
+                      _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
                       color: Theme.of(context).primaryColorDark,
                     ),
                     onPressed: () {
@@ -91,7 +97,11 @@ class _SignUpViewState extends State<SignUpView> {
                   padding: EdgeInsets.symmetric(vertical: 16),
                 ),
                 onPressed: () {
-                  // Implement sign-up logic
+                  signUpViewModel.signUp(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignInState()),
+                  );
                 },
                 child: Text(
                   'Sign Up',
@@ -119,8 +129,7 @@ class _SignUpViewState extends State<SignUpView> {
                           ..onTap = () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignInView()),
+                              MaterialPageRoute(builder: (context) => SignInState()),
                             );
                           },
                       ),
