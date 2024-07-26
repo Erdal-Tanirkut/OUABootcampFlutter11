@@ -5,6 +5,7 @@ class UserM { //It was very often confused with User in Firebase
   final String? password;
   final List<String> postIds;
   final List<String> savedPostIds;
+  // profile photo
 
   UserM({
     required this.userId,

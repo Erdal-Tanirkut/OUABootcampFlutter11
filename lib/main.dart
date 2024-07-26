@@ -39,7 +39,13 @@ Future<void> main() async {
   //await firebaseService.createAndWriteRandomPost();
 
   // Read and log a post
-  //await firebaseService.readAndLogPost('post_141'); // Replace with actual post ID if available
+  //await firebaseService.readAndLogPost('post_147'); // Replace with actual post ID if available
+
+  // Start logging all posts
+  //firebaseService.logAllPosts();
+
+  // Start logging all posts using Future
+
 
   // Create a new Tag and add to Firestore TODO buradan yeni tag ler yaratılabilir
   //final newTag = Tag(tagId: 'NewTag', postIds: []);
