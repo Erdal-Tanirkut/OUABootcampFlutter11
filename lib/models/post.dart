@@ -12,6 +12,18 @@ class Post {
   final int likeCount;
   final ImageM image; // This is just ID, with this id you can read image from firebaseDAO class (as .webp)
 
+  /* DETAİLS FOR THIS MODEL
+  name
+  about
+  artist id
+  tag
+  price (string) TODO [BU EKSİK]
+  location (string) TODO [BU EKSİK]
+  comment (comment model list)  TODO [BU EKSİK]
+  link
+  photos
+   */
+
   Post({
     required this.userID,
     required this.postId,

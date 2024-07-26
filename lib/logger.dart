@@ -67,6 +67,31 @@ class FirebaseService {
     }
   }
 
+  // Stream of all Posts from Firestore
+  Stream<List<Post>> readAllPosts() {
+    return postsCollection.snapshots().map((snapshot) {
+      return snapshot.docs.map((doc) {
+        final data = doc.data() as Map<String, dynamic>?;
+        if (data != null) {
+          return Post.fromJson(data);
+        } else {
+          throw Exception("Post data is null");
+        }
+      }).toList();
+    });
+  }
+
+  // Function to log all posts
+  void logAllPosts() {
+    readAllPosts().listen((posts) {
+      for (var post in posts) {
+        info('Post ID: ${post.postId}, Title: ${post.title}, Description: ${post.description}');
+      }
+    }, onError: (error) {
+      error('Error retrieving posts: $error');
+    });
+  }
+
   // Function to create a random Post
   Future<void> createAndWriteRandomPost() async {
     final random = Random();
@@ -115,7 +140,8 @@ class FirebaseService {
   // Function to read Posts by Tag ID and log them
   Future<void> readAndLogPostsByTagId(String tagId) async {
     try {
-      final querySnapshot = await postsCollection.where('tagId.tagId', isEqualTo: tagId).get();
+      final querySnapshot =
+      await postsCollection.where('tagId.tagId', isEqualTo: tagId).get();
       if (querySnapshot.docs.isNotEmpty) {
         final posts = querySnapshot.docs.map((doc) {
           final data = doc.data() as Map<String, dynamic>;
@@ -123,7 +149,8 @@ class FirebaseService {
         }).toList();
 
         for (var post in posts) {
-          info('Post ID: ${post.postId}, Title: ${post.title}, Description: ${post.description}');
+          info(
+              'Post ID: ${post.postId}, Title: ${post.title}, Description: ${post.description}');
         }
       } else {
         info('No posts found for Tag ID: $tagId');
@@ -149,11 +176,11 @@ class FirebaseService {
     }
   }
 
-
   // Upload an image to Firebase Storage and log the URL
   Future<void> uploadAndLogImage(String imagePath) async {
     try {
-      final storageRef = storage.ref().child('images/${DateTime.now().millisecondsSinceEpoch}.webp');
+      final storageRef =
+      storage.ref().child('images/${DateTime.now().millisecondsSinceEpoch}.webp');
       final uploadTask = storageRef.putFile(File(imagePath));
       final snapshot = await uploadTask;
       final downloadUrl = await snapshot.ref.getDownloadURL();
@@ -175,9 +202,11 @@ class FirebaseService {
   }
 
   // Register a new user with email and password
-  Future<UserM?> registerUser(String email, String password, String username) async {
+  Future<UserM?> registerUser(
+      String email, String password, String username) async {
     try {
-      final UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+      final UserCredential userCredential =
+      await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -207,7 +236,8 @@ class FirebaseService {
   // Sign in an existing user with email and password
   Future<UserM?> signInUser(String email, String password) async {
     try {
-      final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+      final UserCredential userCredential =
+      await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -241,7 +271,6 @@ class FirebaseService {
     }
   }
 }
-
 
 void info(String message) {
   print('[INFO] $message');
