@@ -48,6 +48,10 @@ class AddPostState with ChangeNotifier {
   final aboutWorkController = TextEditingController();
   final typeController = TextEditingController();
   final linkController = TextEditingController();
+  final locationController = TextEditingController();
+  final priceController = TextEditingController();
+  final artistController = TextEditingController();
+  final sizeController = TextEditingController();
 
   void dispose() {
     nameController.dispose();
