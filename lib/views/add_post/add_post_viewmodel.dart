@@ -14,6 +14,7 @@ class AddPostViewModel {
   AddPostViewModel({required this.state});
 
   Future<void> submitPost() async {
+    //Sending post data
     // Benzersiz bir postId oluştur
     final postId = Uuid().v4();
 
