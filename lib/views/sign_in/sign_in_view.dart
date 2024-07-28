@@ -1,9 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:muse/main.dart';
-import 'package:muse/views/sign_up/sign_up_view.dart';
-
+import 'package:muse/views/sign_up/sign_up_state.dart';
+import 'package:provider/provider.dart';
+import 'sign_in_viewmodel.dart';
 import '../explore/explore_view.dart';
+import '../sign_up/sign_up_view.dart';
 
 class SignInView extends StatefulWidget {
   @override
@@ -11,10 +12,12 @@ class SignInView extends StatefulWidget {
 }
 
 class _SignInViewState extends State<SignInView> {
-  bool _isPasswordVisible = false; //to toggle visibility
+  bool _isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = Provider.of<SignInViewModel>(context);
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -43,6 +46,7 @@ class _SignInViewState extends State<SignInView> {
               ),
               SizedBox(height: 32),
               TextField(
+                onChanged: viewModel.setEmail,
                 decoration: InputDecoration(
                   labelText: 'Email',
                   hintText: 'example@gmail.com',
@@ -51,6 +55,7 @@ class _SignInViewState extends State<SignInView> {
               ),
               SizedBox(height: 16),
               TextField(
+                onChanged: viewModel.setPassword,
                 decoration: InputDecoration(
                   labelText: 'Password',
                   border: OutlineInputBorder(),
@@ -90,12 +95,7 @@ class _SignInViewState extends State<SignInView> {
                   padding: EdgeInsets.symmetric(vertical: 16),
                 ),
                 onPressed: () {
-                  // Implement sign-in logic
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => ExplorePage(),
-                    ),
-                  );
+                  viewModel.signIn(context);
                 },
                 child: Text(
                   'Sign In',
@@ -124,7 +124,7 @@ class _SignInViewState extends State<SignInView> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SignUpView()),
+                                  builder: (context) => SignUpState()),
                             );
                           },
                       ),

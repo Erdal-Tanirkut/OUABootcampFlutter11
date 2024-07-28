@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
+import '../explore/explore_view.dart';
 import 'add_post_state.dart';
 import 'add_post_viewmodel.dart';
 import '../my_works/my_works_viewmodel.dart';
@@ -40,7 +41,6 @@ class _AddPostViewState extends State<AddPostView> {
                 if (state.formKey.currentState!.validate()) {
                   final viewModel = AddPostViewModel(state: state);
                   await viewModel.submitPost();
-                  
                   Provider.of<MyWorksViewModel>(context, listen: false).fetchWorks(); //postları(works) güncellemek
                   Navigator.of(context).pop();
                 }
@@ -76,6 +76,38 @@ class _AddPostViewState extends State<AddPostView> {
                   _buildTextField(state.priceController, 'Price'), //semboller eklenebileceği için keyboardType eklemedim
                   _buildTextField(state.linkController, 'Link'),
                   const SizedBox(height: 20),
+                  ),
+                  const SizedBox(height: 16),
+                  _buildTextField(state.nameController, 'Name'),
+                  const SizedBox(height: 16),
+                  _buildTextField(state.aboutWorkController, 'About work', maxLines: 3),
+                  const SizedBox(height: 16),
+                  _buildTextField(state.typeController, 'Type'),
+                  const SizedBox(height: 16),
+                  _buildTextField(state.linkController, 'Link'),
+                  const SizedBox(height: 20),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        if (state.formKey.currentState!.validate()) {
+                          final viewModel = AddPostViewModel(state: state);
+                          await viewModel.submitPost();
+
+                          Provider.of<MyWorksViewModel>(context, listen: false).fetchWorks(); //postları(works) güncellemek
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => ExplorePage(),
+                            ),
+                          );
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                        backgroundColor: const Color(0xFFB71C1C), // Düğmenin arka plan rengi
+                      ),
+                      child: const Text('Submit'),
+                    ),
+                  ),
                 ],
               ),
             );
@@ -105,22 +137,41 @@ class _AddPostViewState extends State<AddPostView> {
           unselectedItemColor: Colors.grey,
           showSelectedLabels: false,
           showUnselectedLabels: false,
+              icon: Icon(Icons.explore),
+              label: 'Explore',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.chat_bubble_outline),
+              label: 'Chat',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.notifications),
+              label: 'Notification',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.red[900],
           onTap: _onItemTapped,
         ),
       ),
     );
   }
 
-  Widget _buildTextField(TextEditingController controller, String label,
-      {int maxLines = 1, TextInputType keyboardType = TextInputType.text}) {
+  Widget _buildTextField(TextEditingController controller, String labelText, {int maxLines = 1}) {
     return TextFormField(
       controller: controller,
-      decoration: InputDecoration(labelText: label),
       maxLines: maxLines,
-      keyboardType: keyboardType,
+      decoration: InputDecoration(
+        border: const OutlineInputBorder(),
+        labelText: labelText,
+      ),
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Please enter $label';
+          return 'Please enter some text';
         }
         return null;
       },

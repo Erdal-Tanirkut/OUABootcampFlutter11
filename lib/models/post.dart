@@ -2,6 +2,7 @@ import 'package:muse/models/tag.dart';
 import 'image.dart';
 
 class Post {
+  final String userID;
   final String postId;
   final String title;
   final String description;
@@ -9,9 +10,10 @@ class Post {
   final String storageId;
   final String youtubeVideoLink;
   final int likeCount;
-  final Image image;
+  final ImageM image;
 
   Post({
+    required this.userID,
     required this.postId,
     required this.title,
     required this.description,
@@ -23,7 +25,8 @@ class Post {
   });
 
   factory Post.fromJson(Map<String, dynamic> json) {
-    if (json['postId'] == null ||
+    if (json['userID'] == null ||
+        json['postId'] == null ||
         json['title'] == null ||
         json['description'] == null ||
         json['tagId'] == null ||
@@ -34,9 +37,10 @@ class Post {
     }
 
     final tag = Tag.fromJson(json['tagId'] as Map<String, dynamic>);
-    final image = Image.fromJson(json['image'] as Map<String, dynamic>);
+    final image = ImageM.fromJson(json['image'] as Map<String, dynamic>);
 
     return Post(
+      userID: json['userID'] as String,
       postId: json['postId'] as String,
       title: json['title'] as String,
       description: json['description'] as String,
@@ -49,6 +53,7 @@ class Post {
   }
 
   Map<String, dynamic> toJson() => {
+    'userID': userID,
     'postId': postId,
     'title': title,
     'description': description,

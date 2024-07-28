@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import '../explore/explore_view.dart';
 
 class SignInViewModel extends ChangeNotifier {
-  // Add properties and methods for handling sign-in logic
   String email = '';
   String password = '';
 
@@ -16,7 +18,27 @@ class SignInViewModel extends ChangeNotifier {
   }
 
   Future<void> signIn(BuildContext context) async {
-    // Implement sign-in logic
-
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      // Navigate to the Explore page on successful sign-in
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => ExplorePage(),
+        ),
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('No user found for that email.')),
+        );
+      } else if (e.code == 'wrong-password') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Wrong password provided for that user.')),
+        );
+      }
+    }
   }
 }

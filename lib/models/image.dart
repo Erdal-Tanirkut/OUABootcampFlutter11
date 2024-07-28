@@ -1,26 +1,19 @@
-class Image {
-  final String storageId;
-  final String imageUrl;
+class ImageM {
+  final String url;
+  final String storagePath;
 
-  Image({
-    required this.storageId,
-    required this.imageUrl,
-  });
 
-  factory Image.fromJson(Map<String, dynamic> json) {
-    // Validate required fields
-    if (json['storageId'] == null || json['imageUrl'] == null) {
-      throw ArgumentError('Missing required fields in JSON');
-    }
+  ImageM({required this.url, required this.storagePath, required String imageUrl, required String storageId});
 
-    return Image(
-      storageId: json['storageId'] as String,
-      imageUrl: json['imageUrl'] as String,
+  factory ImageM.fromJson(Map<String, dynamic> json) {
+    return ImageM(
+      url: json['url'] as String,
+      storagePath: json['storagePath'] as String, imageUrl: '', storageId: '',
     );
   }
 
   Map<String, dynamic> toJson() => {
-    'storageId': storageId,
-    'imageUrl': imageUrl,
+    'url': url,
+    'storagePath': storagePath,
   };
 }

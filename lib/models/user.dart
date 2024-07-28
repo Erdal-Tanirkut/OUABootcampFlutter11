@@ -1,4 +1,4 @@
-class User {
+class UserM { //It was very often confused with User in Firebase
   final String userId;
   final String email;
   final String username;
@@ -6,7 +6,7 @@ class User {
   final List<String> postIds;
   final List<String> savedPostIds;
 
-  User({
+  UserM({
     required this.userId,
     required this.email,
     required this.username,
@@ -15,13 +15,13 @@ class User {
     this.savedPostIds = const [],
   });
 
-  factory User.fromJson(Map<String, dynamic> json) {
+  factory UserM.fromJson(Map<String, dynamic> json) {
     // Validate required fields
     if (json['userId'] == null || json['email'] == null || json['username'] == null) {
       throw ArgumentError('Missing required fields in JSON: userId, email, username');
     }
 
-    return User(
+    return UserM(
       userId: json['userId'] as String,
       email: json['email'] as String,
       username: json['username'] as String,

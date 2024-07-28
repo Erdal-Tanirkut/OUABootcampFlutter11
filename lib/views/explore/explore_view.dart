@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../firebase_dao.dart';
 import '../../models/post.dart';
 import '../detail/detail_view.dart';
+import '../profile/profile_view.dart';
 import 'explore_viewmodel.dart';
 
 class ExplorePage extends StatelessWidget {
@@ -114,7 +115,7 @@ class ExplorePage extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Image.network(
-                                      post.image.imageUrl,
+                                      post.image.url,
                                       fit: BoxFit.cover,
                                       height: 100,
                                       width: 100,
@@ -167,6 +168,14 @@ class ExplorePage extends StatelessWidget {
           showSelectedLabels: false,
           showUnselectedLabels: false,
           onTap: (index) {
+            print(index);
+            if (index == 3)
+            {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfilePage()),
+              );
+            }
             // Implement navigation or other actions here
           },
         ),

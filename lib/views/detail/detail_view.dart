@@ -85,7 +85,7 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
             SizedBox(height: 8),
             Center(
               child: Text(
-                widget.post.tagId.toString(),
+                widget.post.tagId.tagId.toString(),
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 16,
@@ -101,7 +101,7 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
               ),
             ),
             Text(
-              'Flutter11', // Example artist name, replace with actual artist data
+              widget.post.title, // Example artist name, replace with actual artist data
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 18,
