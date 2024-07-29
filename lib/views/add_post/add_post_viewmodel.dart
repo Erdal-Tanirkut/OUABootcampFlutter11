@@ -24,6 +24,7 @@ class AddPostViewModel {
     }
 
     // Yeni Post nesnesini oluştur
+    /*
     final post = Post(
       userID: 'userID', // Burada kullanıcı ID'sini kullanın
       postId: postId,
@@ -39,5 +40,7 @@ class AddPostViewModel {
     // Post'u Firestore'a yaz
     await _firebaseDao.writePost(post);
     print("Submit post with image path: ${state.imageFile?.path}");
+
+     */
   }
 }

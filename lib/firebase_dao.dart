@@ -5,6 +5,7 @@ import 'package:muse/models/tag.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'models/comment.dart';
 import 'models/user.dart';
 
 class FirebaseDao {
@@ -66,6 +67,49 @@ class FirebaseDao {
       print("Error deleting post: ${e.message}");
     }
   }
+
+  // Add a Comment to a Post's commentList in Firestore
+  Future<void> addCommentToPost(String postId, Comment comment) async {
+    try {
+      final docSnapshot = await postsCollection.doc(postId).get();
+      if (docSnapshot.exists) {
+        final data = docSnapshot.data() as Map<String, dynamic>?;
+        if (data != null) {
+          List<dynamic> commentList = data['commentList'] ?? [];
+          commentList.add(comment.toJson());
+          await postsCollection.doc(postId).update({'commentList': commentList});
+        } else {
+          throw Exception("Post data is null");
+        }
+      } else {
+        throw Exception("Post not found");
+      }
+    } on FirebaseException catch (e) {
+      print("Error adding comment: ${e.message}");
+    }
+  }
+
+  // Remove a Comment from a Post's commentList in Firestore
+  Future<void> removeCommentFromPost(String postId, String commentId) async {
+    try {
+      final docSnapshot = await postsCollection.doc(postId).get();
+      if (docSnapshot.exists) {
+        final data = docSnapshot.data() as Map<String, dynamic>?;
+        if (data != null) {
+          List<dynamic> commentList = data['commentList'] ?? [];
+          commentList.removeWhere((comment) => comment['commentID'] == commentId);
+          await postsCollection.doc(postId).update({'commentList': commentList});
+        } else {
+          throw Exception("Post data is null");
+        }
+      } else {
+        throw Exception("Post not found");
+      }
+    } on FirebaseException catch (e) {
+      print("Error removing comment: ${e.message}");
+    }
+  }
+
 
   // Create a new Tag in Firestore
   Future<void> createTag(Tag tag) async {

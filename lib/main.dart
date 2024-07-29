@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:muse/models/comment.dart';
 import 'firebase_options.dart';
 import 'logger.dart'; // Logger fonksiyonları burada tanımlı olmalı
 import 'views/sign_in/sign_in_state.dart'; // SignInState için doğru import
@@ -54,6 +55,21 @@ Future<void> main() async {
 
   // Download and log the image
   //await firebaseService.downloadAndLogImage(imageUrl);
+
+  // Add a comment to a post and log it
+  final comment = Comment(
+      commentID: 'comment_02',
+      postID: "post_301",
+      userID: 'user_001',
+      description: 'This is a test comment',
+      date: DateTime.now().toString()
+  );
+  // Write a comment to this post:
+  //await firebaseService.addCommentToPostAndLog('post_301', comment);
+
+  // Remove a comment from a post and log it
+  //await firebaseService.removeCommentFromPostAndLog('post_301', 'comment_001');
+
 
   runApp(MyApp());
 }
