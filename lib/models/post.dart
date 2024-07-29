@@ -1,4 +1,5 @@
 import 'package:muse/models/tag.dart';
+import 'comment.dart';
 import 'image.dart';
 
 class Post {
@@ -11,6 +12,9 @@ class Post {
   final String youtubeVideoLink;
   final int likeCount;
   final ImageM image;
+  final String price;
+  final String location;
+  final List<Comment> comments;
 
   Post({
     required this.userID,
@@ -22,6 +26,9 @@ class Post {
     required this.youtubeVideoLink,
     required this.likeCount,
     required this.image,
+    required this.price,
+    required this.location,
+    required this.comments,
   });
 
   factory Post.fromJson(Map<String, dynamic> json) {
@@ -32,12 +39,18 @@ class Post {
         json['tagId'] == null ||
         json['storageId'] == null ||
         json['likeCount'] == null ||
-        json['image'] == null) {
+        json['image'] == null ||
+        json['price'] == null ||
+        json['location'] == null ||
+        json['comments'] == null) {
       throw ArgumentError('Missing required fields in JSON');
     }
 
     final tag = Tag.fromJson(json['tagId'] as Map<String, dynamic>);
     final image = ImageM.fromJson(json['image'] as Map<String, dynamic>);
+    final comments = (json['comments'] as List<dynamic>)
+        .map((commentJson) => Comment.fromJson(commentJson as Map<String, dynamic>))
+        .toList();
 
     return Post(
       userID: json['userID'] as String,
@@ -49,6 +62,9 @@ class Post {
       youtubeVideoLink: json['youtubeVideoLink'] as String,
       likeCount: json['likeCount'] as int,
       image: image,
+      price: json['price'] as String,
+      location: json['location'] as String,
+      comments: comments,
     );
   }
 
@@ -62,5 +78,8 @@ class Post {
     'youtubeVideoLink': youtubeVideoLink,
     'likeCount': likeCount,
     'image': image.toJson(),
+    'price': price,
+    'location': location,
+    'comments': comments.map((comment) => comment.toJson()).toList(),
   };
 }

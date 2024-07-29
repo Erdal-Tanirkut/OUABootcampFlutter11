@@ -9,6 +9,7 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'firebase_dao.dart';
 import 'models/user.dart';
+import 'package:muse/models/comment.dart';
 
 class FirebaseService {
   final CollectionReference postsCollection =
@@ -75,18 +76,23 @@ class FirebaseService {
     final randomTag = predefinedTags[random.nextInt(predefinedTags.length)];
 
     final post = Post(
+      userID: "rastgeleuser1",
       postId: postId,
       title: 'Rastgele Başlık ${random.nextInt(100)}',
       description: 'Bu rastgele bir içeriğe sahip bir post.',
       tagId: randomTag,
-      userID: "rastgeleuser1",
       storageId: 'storage_${random.nextInt(1000)}',
       youtubeVideoLink: 'https://www.youtube.com/shorts/XGdIpgQOSNc',
       likeCount: random.nextInt(100),
       image: ImageM(
-          storageId: 'image_${random.nextInt(1000)}',
-          imageUrl:
-          'https://i.etsystatic.com/9001843/r/il/86a001/4540195690/il_1588xN.4540195690_rghf.jpg', url: '', storagePath: ''),
+        storageId: 'image_${random.nextInt(1000)}',
+        imageUrl: 'https://i.etsystatic.com/9001843/r/il/86a001/4540195690/il_1588xN.4540195690_rghf.jpg',
+        url: '',
+        storagePath: '',
+      ),
+      price: '\$${random.nextInt(100)}',
+      location: 'Konum ${random.nextInt(100)}',
+      comments: [],
     );
 
     await writePost(post);
@@ -149,6 +155,25 @@ class FirebaseService {
     }
   }
 
+  // Function to add a Comment to a Post and log it
+  Future<void> addCommentToPostAndLog(String postId, Comment comment) async {
+    try {
+      await FirebaseDao().addCommentToPost(postId, comment);
+      info('Comment added to Post ID: $postId, Comment ID: ${comment.commentID}');
+    } catch (e) {
+      error("Error adding comment to Post ID: $postId", e);
+    }
+  }
+
+  // Function to remove a Comment from a Post and log it
+  Future<void> removeCommentFromPostAndLog(String postId, String commentId) async {
+    try {
+      await FirebaseDao().removeCommentFromPost(postId, commentId);
+      info('Comment removed from Post ID: $postId, Comment ID: $commentId');
+    } catch (e) {
+      error("Error removing comment from Post ID: $postId", e);
+    }
+  }
 
   // Upload an image to Firebase Storage and log the URL
   Future<void> uploadAndLogImage(String imagePath) async {

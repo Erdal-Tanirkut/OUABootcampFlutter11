@@ -1,10 +1,13 @@
-class UserM { //It was very often confused with User in Firebase
+import 'image.dart';
+
+class UserM {
   final String userId;
   final String email;
   final String username;
   final String? password;
   final List<String> postIds;
   final List<String> savedPostIds;
+  final ImageM? profileImage; // New field for profile image
 
   UserM({
     required this.userId,
@@ -13,6 +16,7 @@ class UserM { //It was very often confused with User in Firebase
     this.password,
     this.postIds = const [],
     this.savedPostIds = const [],
+    this.profileImage, // New field for profile image
   });
 
   factory UserM.fromJson(Map<String, dynamic> json) {
@@ -28,6 +32,9 @@ class UserM { //It was very often confused with User in Firebase
       password: json['password'] as String?,
       postIds: (json['postIds'] as List<dynamic>?)?.cast<String>() ?? const [],
       savedPostIds: (json['savedPostIds'] as List<dynamic>?)?.cast<String>() ?? const [],
+      profileImage: json['profileImage'] != null
+          ? ImageM.fromJson(json['profileImage'] as Map<String, dynamic>)
+          : null, // New field for profile image
     );
   }
 
@@ -38,5 +45,6 @@ class UserM { //It was very often confused with User in Firebase
     if (password != null) 'password': password,
     'postIds': postIds,
     'savedPostIds': savedPostIds,
+    if (profileImage != null) 'profileImage': profileImage!.toJson(), // New field for profile image
   };
 }
