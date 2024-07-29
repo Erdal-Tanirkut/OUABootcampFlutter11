@@ -12,9 +12,9 @@ class Post {
   final String youtubeVideoLink;
   final int likeCount;
   final ImageM image;
-  final String price;  // Yeni eklenen kısım
-  final String location;  // Yeni eklenen kısım
-  final List<Comment> comments;  // Yeni eklenen kısım
+  final String price;
+  final String location;
+  final List<Comment> comments;
 
   Post({
     required this.userID,
@@ -40,9 +40,9 @@ class Post {
         json['storageId'] == null ||
         json['likeCount'] == null ||
         json['image'] == null ||
-        json['price'] == null ||  // Yeni eklenen kısım
-        json['location'] == null ||  // Yeni eklenen kısım
-        json['comments'] == null) {  // Yeni eklenen kısım
+        json['price'] == null ||
+        json['location'] == null ||
+        json['comments'] == null) {
       throw ArgumentError('Missing required fields in JSON');
     }
 
@@ -62,9 +62,9 @@ class Post {
       youtubeVideoLink: json['youtubeVideoLink'] as String,
       likeCount: json['likeCount'] as int,
       image: image,
-      price: json['price'] as String,  // Yeni eklenen kısım
-      location: json['location'] as String,  // Yeni eklenen kısım
-      comments: comments,  // Yeni eklenen kısım
+      price: json['price'] as String,
+      location: json['location'] as String,
+      comments: comments,
     );
   }
 
@@ -78,8 +78,8 @@ class Post {
     'youtubeVideoLink': youtubeVideoLink,
     'likeCount': likeCount,
     'image': image.toJson(),
-    'price': price,  // Yeni eklenen kısım
-    'location': location,  // Yeni eklenen kısım
-    'comments': comments.map((comment) => comment.toJson()).toList(),  // Yeni eklenen kısım
+    'price': price,
+    'location': location,
+    'comments': comments.map((comment) => comment.toJson()).toList(),
   };
 }
