@@ -9,4 +9,3 @@ class MyWorksViewModel extends ChangeNotifier {
     notifyListeners();
   }
 }
-}

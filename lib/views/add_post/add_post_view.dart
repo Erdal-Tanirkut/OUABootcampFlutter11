@@ -41,6 +41,7 @@ class _AddPostViewState extends State<AddPostView> {
                 if (state.formKey.currentState!.validate()) {
                   final viewModel = AddPostViewModel(state: state);
                   await viewModel.submitPost();
+
                   Provider.of<MyWorksViewModel>(context, listen: false).fetchWorks(); //postları(works) güncellemek
                   Navigator.of(context).pop();
                 }
@@ -58,6 +59,7 @@ class _AddPostViewState extends State<AddPostView> {
                   GestureDetector(
                     onTap: () async {
                       await state.pickImage(context);
+
                     },
                     child: Container(
                       height: 150,
@@ -66,16 +68,6 @@ class _AddPostViewState extends State<AddPostView> {
                           ? const Icon(Icons.add_a_photo, size: 50)
                           : Image.file(File(state.imageFile!.path)),
                     ),
-                  ),
-                  _buildTextField(state.nameController, 'Name'),
-                  _buildTextField(state.aboutWorkController, 'About work', maxLines: 3),
-                  _buildTextField(state.artistController, 'Artist'),
-                  _buildTextField(state.typeController, 'Type'),
-                  _buildTextField(state.sizeController, 'Size'),
-                  _buildTextField(state.locationController, 'Location'),
-                  _buildTextField(state.priceController, 'Price'), //semboller eklenebileceği için keyboardType eklemedim
-                  _buildTextField(state.linkController, 'Link'),
-                  const SizedBox(height: 20),
                   ),
                   const SizedBox(height: 16),
                   _buildTextField(state.nameController, 'Name'),
@@ -116,27 +108,6 @@ class _AddPostViewState extends State<AddPostView> {
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: '',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.red.shade900,
-          unselectedItemColor: Colors.grey,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
               icon: Icon(Icons.explore),
               label: 'Explore',
             ),
