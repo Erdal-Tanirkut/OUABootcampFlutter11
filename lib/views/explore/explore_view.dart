@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../core/constants/bottom_navigation_bar.dart';
 import '../../firebase_dao.dart';
 import '../../models/post.dart';
 import '../detail/detail_view.dart';
@@ -7,7 +8,16 @@ import '../profile/profile_view.dart';
 import 'explore_viewmodel.dart';
 
 class ExplorePage extends StatelessWidget {
-  final List<String> categories = ['Sculpture', 'Painting', 'Digital Illustration', 'Photography', 'Mixed Media', 'Drawing', 'Printmaking', 'Ceramics'];
+  final List<String> categories = [
+    'Sculpture',
+    'Painting',
+    'Digital Illustration',
+    'Photography',
+    'Mixed Media',
+    'Drawing',
+    'Printmaking',
+    'Ceramics'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +41,8 @@ class ExplorePage extends StatelessWidget {
                     },
                     decoration: InputDecoration(
                       hintText: 'Search',
-                      prefixIcon: Icon(Icons.search, color: Colors.red.shade900),
+                      prefixIcon:
+                          Icon(Icons.search, color: Colors.red.shade900),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                         borderSide: BorderSide(
@@ -59,7 +70,8 @@ class ExplorePage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: categories.map((category) {
-                        final isSelected = viewModel.selectedCategories.contains(category);
+                        final isSelected =
+                            viewModel.selectedCategories.contains(category);
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 4.0),
                           child: ChoiceChip(
@@ -87,7 +99,8 @@ class ExplorePage extends StatelessWidget {
                         final posts = viewModel.filterPosts(snapshot.data!);
                         return GridView.builder(
                           padding: const EdgeInsets.all(8.0),
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             crossAxisSpacing: 8.0,
                             mainAxisSpacing: 8.0,
@@ -123,7 +136,9 @@ class ExplorePage extends StatelessWidget {
                                     SizedBox(height: 8),
                                     Text(
                                       post.title,
-                                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ],
                                 ),
@@ -143,42 +158,7 @@ class ExplorePage extends StatelessWidget {
             );
           },
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: '',
-            ),
-          ],
-          currentIndex: 1,
-          selectedItemColor: Colors.red.shade900,
-          unselectedItemColor: Colors.grey,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          onTap: (index) {
-            print(index);
-            if (index == 3)
-            {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
-              );
-            }
-            // Implement navigation or other actions here
-          },
-        ),
+        bottomNavigationBar: CustomBottomNavigationBar(currentIndex: 1),
       ),
     );
   }

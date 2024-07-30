@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
+import '../../core/constants/bottom_navigation_bar.dart';
 import '../explore/explore_view.dart';
 import 'add_post_state.dart';
 import 'add_post_viewmodel.dart';
@@ -14,13 +15,6 @@ class AddPostView extends StatefulWidget {
 }
 
 class _AddPostViewState extends State<AddPostView> {
-  int _selectedIndex = 3; // profile icon
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,29 +99,7 @@ class _AddPostViewState extends State<AddPostView> {
             );
           },
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.explore),
-              label: 'Explore',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.chat_bubble_outline),
-              label: 'Chat',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.notifications),
-              label: 'Notification',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.red[900],
-          onTap: _onItemTapped,
-        ),
+       bottomNavigationBar: CustomBottomNavigationBar(currentIndex: 2),
       ),
     );
   }
