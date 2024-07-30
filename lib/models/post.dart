@@ -14,9 +14,11 @@ class Post {
   final ImageM image;
   final String price;
   final String location;
+  final String artist;
   final List<Comment> comments;
 
   Post({
+    required this.artist,
     required this.userID,
     required this.postId,
     required this.title,
@@ -37,6 +39,7 @@ class Post {
         json['title'] == null ||
         json['description'] == null ||
         json['tagId'] == null ||
+        json['artist'] == null ||
         json['storageId'] == null ||
         json['likeCount'] == null ||
         json['image'] == null ||
@@ -56,6 +59,7 @@ class Post {
       userID: json['userID'] as String,
       postId: json['postId'] as String,
       title: json['title'] as String,
+      artist: json['artist'] as String,
       description: json['description'] as String,
       tagId: tag,
       storageId: json['storageId'] as String,
@@ -72,6 +76,7 @@ class Post {
     'userID': userID,
     'postId': postId,
     'title': title,
+    'artist': artist,
     'description': description,
     'tagId': tagId.toJson(),
     'storageId': storageId,

@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddPostState with ChangeNotifier {
+
   final formKey = GlobalKey<FormState>();
   final ImagePicker _picker = ImagePicker();
   XFile? imageFile;
@@ -20,6 +23,7 @@ class AddPostState with ChangeNotifier {
       print("Failed to pick image: $e");
     }
   }
+
 
   Future<ImageSource?> _showImageSourceDialog(BuildContext context) async {
     return showModalBottomSheet<ImageSource>(
@@ -44,16 +48,24 @@ class AddPostState with ChangeNotifier {
     );
   }
 
+
   final nameController = TextEditingController();
   final aboutWorkController = TextEditingController();
   final typeController = TextEditingController();
+  final artistController = TextEditingController();
   final linkController = TextEditingController();
+  final locationController = TextEditingController();
+  final priceController = TextEditingController();
+
 
   void dispose() {
     nameController.dispose();
     aboutWorkController.dispose();
     typeController.dispose();
     linkController.dispose();
+    artistController.dispose();
+    locationController.dispose();
+    priceController.dispose();
     super.dispose();
   }
 }

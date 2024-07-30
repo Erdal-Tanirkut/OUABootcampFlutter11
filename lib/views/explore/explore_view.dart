@@ -109,7 +109,6 @@ class ExplorePage extends StatelessWidget {
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: Colors.grey.withOpacity(0.5),
-                                  borderRadius: BorderRadius.circular(15.0),
                                 ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -117,13 +116,8 @@ class ExplorePage extends StatelessWidget {
                                     Image.network(
                                       post.image.url,
                                       fit: BoxFit.cover,
-                                      height: 100,
-                                      width: 100,
-                                    ),
-                                    SizedBox(height: 8),
-                                    Text(
-                                      post.title,
-                                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                      height: 192,
+                                      width: 192,
                                     ),
                                   ],
                                 ),

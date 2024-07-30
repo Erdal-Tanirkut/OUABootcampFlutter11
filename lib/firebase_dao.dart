@@ -24,6 +24,31 @@ class FirebaseDao {
       print("Error writing post: ${e.message}");
     }
   }
+  // Kullanıcı verilerini almak için
+  Future<UserM?> getUserData(String userId) async {
+    try {
+      final docSnapshot = await usersCollection.doc(userId).get();
+      if (docSnapshot.exists) {
+        final data = docSnapshot.data() as Map<String, dynamic>?;
+        if (data != null) {
+          return UserM.fromJson(data);
+        }
+      }
+    } catch (e) {
+      print("Error getting user data: $e");
+    }
+    return null;
+  }
+
+// Kullanıcı verilerini güncellemek için
+  Future<void> updateUserData(UserM user) async {
+    try {
+      await usersCollection.doc(user.userId).set(user.toJson());
+    } catch (e) {
+      print("Error updating user data: $e");
+    }
+  }
+
 
   // Read all Posts from Firestore (consider pagination for large datasets)
   Stream<List<Post>> readAllPosts() {
@@ -286,3 +311,4 @@ class FirebaseDao {
 
 
 }
+

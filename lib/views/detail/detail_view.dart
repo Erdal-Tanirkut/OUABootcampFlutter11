@@ -1,8 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import '../../firebase_dao.dart';
 import '../../models/post.dart';
+import '../../models/user.dart';
 
 class ArtworkDetailPage extends StatefulWidget {
+
   final Post post;
 
   ArtworkDetailPage({required this.post});
@@ -13,6 +17,7 @@ class ArtworkDetailPage extends StatefulWidget {
 
 class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
   late YoutubePlayerController _controller;
+  bool isFavorite = false; // Favori durumu
 
   @override
   void initState() {
@@ -31,6 +36,38 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
         _controller.play();
       }
     });
+    _checkIfFavorite();
+  }
+  Future<void> _checkIfFavorite() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      UserM? userData = await FirebaseDao().getUserData(user.uid);
+      if (userData != null) {
+        setState(() {
+          isFavorite = userData.savedPostIds.contains(widget.post.postId);
+        });
+      }
+    }
+  }
+
+  Future<void> _toggleFavorite() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      UserM? userData = await FirebaseDao().getUserData(user.uid);
+      if (userData != null) {
+        if (isFavorite) {
+          // Remove from favorites
+          userData.savedPostIds.remove(widget.post.postId);
+        } else {
+          // Add to favorites
+          userData.savedPostIds.add(widget.post.postId);
+        }
+        await FirebaseDao().updateUserData(userData);
+        setState(() {
+          isFavorite = !isFavorite;
+        });
+      }
+    }
   }
 
   @override
@@ -66,20 +103,32 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
             ),
             SizedBox(height: 16),
             Center(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                decoration: BoxDecoration(
-                  color: Colors.red.shade900,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  widget.post.title,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(width: 45,height: 2,),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.red.shade900,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      widget.post.title,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),IconButton(
+                    icon: Icon(
+                      isFavorite ? Icons.favorite : Icons.favorite_border,
+                      color: isFavorite ? Colors.red : Colors.grey,
+                    ),
+                    onPressed: _toggleFavorite,
                   ),
-                ),
+                ],
               ),
             ),
             SizedBox(height: 8),
@@ -101,23 +150,7 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
               ),
             ),
             Text(
-              widget.post.title, // Example artist name, replace with actual artist data
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Size',
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 16,
-              ),
-            ),
-            Text(
-              'Lorem Ipsum', // Example size, replace with actual size data
+              widget.post.artist, // Example artist name, replace with actual artist data
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 18,
@@ -133,7 +166,7 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
               ),
             ),
             Text(
-              'Lorem Ipsum, Istanbul, Turkiye', // Example location, replace with actual location data
+              widget.post.location, // Example location, replace with actual location data
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 18,
@@ -142,7 +175,7 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
             ),
             SizedBox(height: 8),
             Text(
-              '90€',
+              widget.post.price,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 22,

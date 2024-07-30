@@ -92,7 +92,7 @@ class FirebaseService {
       ),
       price: '\$${random.nextInt(100)}',
       location: 'Konum ${random.nextInt(100)}',
-      comments: [],
+      comments: [], artist: 'Erdal Tanırkut',
     );
 
     await writePost(post);

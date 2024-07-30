@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
@@ -11,16 +13,23 @@ class AddPostView extends StatefulWidget {
 
   @override
   _AddPostViewState createState() => _AddPostViewState();
+
 }
 
+
 class _AddPostViewState extends State<AddPostView> {
+  late User user;
+  late DocumentSnapshot userDoc;
   int _selectedIndex = 3; // profile icon
+
+
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +52,12 @@ class _AddPostViewState extends State<AddPostView> {
                   await viewModel.submitPost();
 
                   Provider.of<MyWorksViewModel>(context, listen: false).fetchWorks(); //postları(works) güncellemek
-                  Navigator.of(context).pop();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ExplorePage()),
+                  );
+
                 }
               },
             ),
@@ -72,9 +86,15 @@ class _AddPostViewState extends State<AddPostView> {
                   const SizedBox(height: 16),
                   _buildTextField(state.nameController, 'Name'),
                   const SizedBox(height: 16),
+                  _buildTextField(state.artistController, 'Artist'),
+                  const SizedBox(height: 16),
                   _buildTextField(state.aboutWorkController, 'About work', maxLines: 3),
                   const SizedBox(height: 16),
                   _buildTextField(state.typeController, 'Type'),
+                  const SizedBox(height: 16),
+                  _buildTextField(state.locationController, 'Location'),
+                  const SizedBox(height: 16),
+                  _buildTextField(state.priceController, 'Price'),
                   const SizedBox(height: 16),
                   _buildTextField(state.linkController, 'Link'),
                   const SizedBox(height: 20),
