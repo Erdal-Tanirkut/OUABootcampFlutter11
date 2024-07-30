@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../../firebase_dao.dart';
 import '../../models/post.dart';
@@ -18,6 +20,9 @@ class ArtworkDetailPage extends StatefulWidget {
 class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
   late YoutubePlayerController _controller;
   bool isFavorite = false; // Favori durumu
+
+
+
 
   @override
   void initState() {
@@ -49,6 +54,41 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
       }
     }
   }
+  Future<String> _getUserEmail(String userId) async {
+    DocumentSnapshot userSnapshot =
+    await FirebaseFirestore.instance.collection('users').doc(userId).get();
+    return userSnapshot['email'] ?? 'No Email Found';
+  }
+  void _showEmailDialog(String email) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Center(
+          child: AlertDialog(
+            title: Text('Contact Information',textAlign: TextAlign.center,),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('Email: $email'),
+                SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    Clipboard.setData(ClipboardData(text: email));
+                    Navigator.of(context).pop(); // Dialog'u kapat
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Email copied to clipboard')),
+                    );
+                  },
+                  child: Text('Copy to Clipboard',style: TextStyle(color: Colors.red),),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
 
   Future<void> _toggleFavorite() async {
     User? user = FirebaseAuth.instance.currentUser;
@@ -70,6 +110,7 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
     }
   }
 
+
   @override
   void dispose() {
     _controller.dispose();
@@ -78,6 +119,7 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       height: MediaQuery.of(context).size.height * 0.75, // Height to show part of the underlying page
       decoration: BoxDecoration(
@@ -173,7 +215,13 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8),
+            Text(
+              'Price',
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 16,
+              ),
+            ),
             Text(
               widget.post.price,
               style: TextStyle(
@@ -182,7 +230,7 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 5),
             Text(
               widget.post.description, // Example description, replace with actual description
               style: TextStyle(
@@ -191,10 +239,19 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
               ),
             ),
             SizedBox(height: 16),
+
+            Expanded(
+              child: YoutubePlayer(
+                controller: _controller,
+                showVideoProgressIndicator: true,
+              ),
+            ),
             Center(
               child: ElevatedButton(
-                onPressed: () {
-                  // Contact to Buy action
+                onPressed: () async {
+                  // Kullanıcının email adresini al ve dialog'u göster
+                  String email = await _getUserEmail(widget.post.userID);
+                  _showEmailDialog(email);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
@@ -207,13 +264,7 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
                 child: Text('Contact to Buy'),
               ),
             ),
-            SizedBox(height: 16),
-            Expanded(
-              child: YoutubePlayer(
-                controller: _controller,
-                showVideoProgressIndicator: true,
-              ),
-            ),
+
           ],
         ),
       ),
