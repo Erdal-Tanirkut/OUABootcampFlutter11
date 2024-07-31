@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../core/constants/bottom_navigation_bar.dart';
 import '../../firebase_dao.dart';
 import '../../models/post.dart';
 import '../detail/detail_view.dart';
@@ -137,42 +138,7 @@ class ExplorePage extends StatelessWidget {
             );
           },
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: '',
-            ),
-          ],
-          currentIndex: 1,
-          selectedItemColor: Colors.red.shade900,
-          unselectedItemColor: Colors.grey,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          onTap: (index) {
-            print(index);
-            if (index == 3)
-            {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
-              );
-            }
-            // Implement navigation or other actions here
-          },
-        ),
+        bottomNavigationBar: CustomBottomNavigationBar(currentIndex: 1,)
       ),
     );
   }

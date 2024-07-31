@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../explore/explore_view.dart';
+import '../home/home_view.dart';
 
 class SignInViewModel extends ChangeNotifier {
   String email = '';
@@ -26,7 +27,7 @@ class SignInViewModel extends ChangeNotifier {
       // Navigate to the Explore page on successful sign-in
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => ExplorePage(),
+          builder: (context) => HomeView(),
         ),
       );
     } on FirebaseAuthException catch (e) {
