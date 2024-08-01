@@ -51,7 +51,6 @@ class _AddPostViewState extends State<AddPostView> {
                   final viewModel = AddPostViewModel(state: state);
                   await viewModel.submitPost();
 
-                  Provider.of<MyWorksViewModel>(context, listen: false).fetchWorks(); //postları(works) güncellemek
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -105,7 +104,6 @@ class _AddPostViewState extends State<AddPostView> {
                           final viewModel = AddPostViewModel(state: state);
                           await viewModel.submitPost();
 
-                          Provider.of<MyWorksViewModel>(context, listen: false).fetchWorks(); //postları(works) güncellemek
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
                               builder: (context) => ExplorePage(),

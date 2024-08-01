@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../views/home/home_view.dart';
 import '../../views/explore/explore_view.dart';
+import '../../views/profile/profile_viewmodel.dart';
 import '../../views/profile/profile_view.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -23,9 +25,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
         );
         break;
       case 2:
-        Navigator.pushReplacement(
+        Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ProfilePage()),
+          MaterialPageRoute(
+            builder: (context) => ChangeNotifierProvider(
+              create: (context) => ProfileViewModel(),
+              child: ProfilePage(),
+            ),
+          ),
         );
         break;
     }

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../../core/constants/bottom_navigation_bar.dart';
+import '../../firebase_dao.dart'; // Import FirebaseDao
+import '../../models/post.dart'; // Import Post model
+import '../detail/detail_view.dart'; // Import DetailPage
 import 'home_viewmodel.dart';
 import 'home_state.dart';
 
@@ -68,35 +71,63 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Widget _buildForYouSection() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: GridView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 16, //horizontal spacing
-          mainAxisSpacing: 16, //vertical spacing
-          childAspectRatio: 1,
-        ),
-        itemCount: 10,
-        itemBuilder: (BuildContext context, int index) {
-          return Stack(alignment: Alignment.topRight, children: [
-            Card(
-              clipBehavior: Clip.antiAlias,
-              child: InkWell(
-                onTap: () {
-                  //adding to favorites
-                },
-              ),
+    return FutureBuilder<List<Post>>(
+      future: FirebaseDao().getTwoPosts(), // Fetch two posts
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return Center(child: Text('Error fetching posts'));
+        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+          return Center(child: Text('No posts available'));
+        }
+
+        final posts = snapshot.data!;
+
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              childAspectRatio: 1,
             ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.favorite_border, color: Colors.black38),
-            ),
-          ]);
-        },
-      ),
+            itemCount: posts.length,
+            itemBuilder: (BuildContext context, int index) {
+              final post = posts[index];
+              return Card(
+                clipBehavior: Clip.antiAlias,
+                child: InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (BuildContext context) {
+                        return ArtworkDetailPage(post: post);
+                      },
+                    );
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.network(
+                        post.image.url,
+                        height: 173,
+                        width: 173,
+                        fit: BoxFit.cover,
+                      ),
+
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }

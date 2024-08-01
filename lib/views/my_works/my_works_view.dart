@@ -1,120 +1,67 @@
+// my_works_view.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../add_post/add_post_view.dart';
+import '../detail/detail_view.dart';
 import 'my_works_viewmodel.dart';
 
-class MyWorksPage extends StatefulWidget {
-  @override
-  _MyWorksPageState createState() => _MyWorksPageState();
-}
-
-class _MyWorksPageState extends State<MyWorksPage> {
-  int _selectedIndex = 3; // profile icon
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
+class MyWorksPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<MyWorksViewModel>(
-      create: (_) => MyWorksViewModel(),
+    return ChangeNotifierProvider(
+      create: (_) => MyWorksViewModel()..loadUserData(),
       child: Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Color(0xFFB71C1C)),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-          title: const Text('My Works'),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.add, color: Color(0xFFB71C1C)),
-              onPressed: () async {
-                final result = await Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AddPostView()),
-                );
-                if (result == true) {
-                  Provider.of<MyWorksViewModel>(context, listen: false).fetchWorks();
-                }
-              },
-            ),
-          ],
+          title: const Text('Favorites'),
         ),
         body: Consumer<MyWorksViewModel>(
-          builder: (context, model, child) {
-            if (model.works.isEmpty) {
-              return const Center(child: Text('No works available.'));
-            }
-
-            return Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.filter_list, color: Colors.black),
-                        onPressed: () {
-                          //filtering logic
-                        },
-                      ),
-                      Text('${model.works.length} items', style: const TextStyle(fontSize: 12, color: Colors.black)),
-                    ],
-                  ),
+          builder: (context, viewModel, child) {
+            if (viewModel.isLoading) {
+              return Center(child: CircularProgressIndicator());
+            } else if (viewModel.works.isEmpty) {
+              return Center(child: Text('No works available.'));
+            } else {
+              return GridView.builder(
+                padding: const EdgeInsets.all(8.0),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 8.0,
+                  mainAxisSpacing: 8.0,
                 ),
-                Expanded(
-                  child: GridView.builder(
-                    padding: const EdgeInsets.only(bottom: 60), //bottom navigation bar için padding
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                    ),
-                    itemCount: model.works.length,
-                    itemBuilder: (context, index) {
-                      return Card(
-                        child: Center(
-                          child: Text(model.works[index]['name'] ?? 'No Name'),
-                        ),
+                itemCount: viewModel.works.length,
+                itemBuilder: (context, index) {
+                  final post = viewModel.works[index];
+                  return GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        builder: (BuildContext context) {
+                          print(post.tagId);
+                          return ArtworkDetailPage(post: post);
+                        },
                       );
                     },
-                  ),
-                ),
-              ],
-            );
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey.withOpacity(0.5),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.network(
+                            post.image.url,
+                            fit: BoxFit.cover,
+                            height: 192,
+                            width: 192,
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            }
           },
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: '',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.red.shade900,
-          unselectedItemColor: Colors.grey,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          onTap: _onItemTapped,
         ),
       ),
     );
