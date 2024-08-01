@@ -9,6 +9,8 @@ import 'package:muse/models/post.dart';
 
 
 class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
   @override
   _ProfileViewState createState() => _ProfileViewState();
 }
@@ -49,7 +51,6 @@ class _ProfileViewState extends State<ProfilePage> {
               );
             },
           ),
-
         ],
         centerTitle: true,
       ),
@@ -59,6 +60,17 @@ class _ProfileViewState extends State<ProfilePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const SizedBox(height: 20),
+              //profile image
+              Center(
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundColor: Colors.grey.shade400,
+                  backgroundImage: viewModel.state.photoUrl.isNotEmpty
+                      ? NetworkImage(viewModel.state.photoUrl) as ImageProvider
+                      : null,
+                ),
+              ),
+              const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Column(

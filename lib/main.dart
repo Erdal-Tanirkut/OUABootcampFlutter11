@@ -1,9 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:muse/models/comment.dart';
+import 'package:muse/views/onboarding/onboarding.dart';
 import 'firebase_options.dart';
 import 'logger.dart'; // Logger fonksiyonları burada tanımlı olmalı
-import 'views/sign_in/sign_in_state.dart'; // SignInState için doğru import
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -78,7 +79,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SignInState(), // SignInState ana sayfa olarak ayarlandı
+      home: OnboardingScreen(), // SignInState ana sayfa olarak ayarlandı
     );
   }
 }

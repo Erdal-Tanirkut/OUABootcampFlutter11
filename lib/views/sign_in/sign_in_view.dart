@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:muse/views/onboarding/onboarding.dart';
 import 'package:muse/views/sign_up/sign_up_state.dart';
 import 'package:provider/provider.dart';
 import 'sign_in_viewmodel.dart';
@@ -29,7 +30,7 @@ class _SignInViewState extends State<SignInView> {
                 alignment: Alignment.topLeft,
                 icon: Icon(Icons.arrow_back, color: Color(0xFFB71C1C)),
                 onPressed: () {
-                  // Navigate to onboarding
+                  Navigator.pop(context);
                 },
               ),
               SizedBox(height: 50),

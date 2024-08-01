@@ -7,7 +7,7 @@ import 'package:muse/models/post.dart';
 
 
 class ProfileViewModel extends ChangeNotifier {
-  ProfileState _state = ProfileState();
+  final ProfileState _state = ProfileState();
 
   ProfileState get state => _state;
 
