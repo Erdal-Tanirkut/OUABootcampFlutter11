@@ -262,6 +262,78 @@ Muse her yaştan sanatseverlerin ve sanatçıların her türlü sanat eserini se
     - Firebase auth şifremi unuttum google ile giriş özelliklerinin eklenmesi kararlaştırıldı.
 
     - Sonraki sprint için yorum yapma,beğenme/kaydetme, my works sayfasına filreleme, açık arttırma sayfası gibi özelliklere odaklanılmasına karar verildi.
+  <details>
+    <summary><h3>Sprint 3 - Uygulama Ekran Görüntüleri</h3></summary>
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 25%;"><img src="bootcampimages/Sprint3/Screens/screen3-1.jpeg" style="max-width: 100%; height: auto;"></td>
+      <td style="width: 25%;"><img src="bootcampimages/Sprint3/Screens/screen3-2.jpeg" style="max-width: 100%; height: auto;"></td>
+      <td style="width: 25%;"><img src="bootcampimages/Sprint3/Screens/screen3-3.jpeg" style="max-width: 100%; height: auto;">
+      <td style="width: 25%;"><img src="bootcampimages/Sprint3/Screens/screen3-4.jpeg" style="max-width: 100%; height: auto;"></td>
+      <td style="width: 25%;"><img src="bootcampimages/Sprint3/Screens/screen3-5.jpeg" style="max-width: 100%; height: auto;"></td>
+      <td style="width: 25%;"><img src="bootcampimages/Sprint3/Screens/screen3-6.jpeg" style="max-width: 100%; height: auto;"></td>
+      <td style="width: 25%;"><img src="bootcampimages/Sprint3/Screens/screen3-7.jpeg" style="max-width: 100%; height: auto;"></td>
+      <td style="width: 25%;"><img src="bootcampimages/Sprint3/Screens/screen3-8.jpeg" style="max-width: 100%; height: auto;">
+    </tr>
+  </table>
+  </details>   
+
+  <details>
+    <summary><h3>Sprint 3 - Sprint Board ekran görüntüleri</h3></summary>
+    <img src="bootcampimages/Sprint3/Trello/Trello3-1.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint3/Trello/Trello3-2.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint3/Trello/Trello3-3.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint3/Trello/Trello3-4.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint3/Trello/Trello3-5.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint3/Trello/Trello3-6.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint3/Trello/Trello3-7.png" style="max-width: 100%; height: auto;">
+  </details>
+
+  <details>
+    <summary><h3>Sprint 3 - Burndown Chart</h3></summary>
+    <img src="bootcampimages/Sprint2/burntdown_chart2.png" style="max-width: 100%; height: auto;">
+  </details>
+  <details>
+    <summary><h3>Sprint 2 - Günlük Scrumlar</h3></summary>
+    <img src="bootcampimages/Sprint3/Daily Scrum/daily_scrum3-1.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint3/Daily Scrum/daily_scrum3-2.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint3/Daily Scrum/daily_scrum3-3.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint3/Daily Scrum/daily_scrum3-4.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint3/Daily Scrum/daily_scrum3-5.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint3/Daily Scrum/daily_scrum3-6.png" style="max-width: 100%; height: auto;">
+  </details>
+
+  - **Sprint Notları**:
+    - Son sprint olması ve oldukça fazla emek isteyen bir feature olması nedeniyle `Açık arttırma ve ödeme özelliklerinin` kağıt üzerinde kalmasına karar verilmiştir .
+
+    - Bu sprintte home sayfası, profil sayfası ve detail gibi özelliklerin `iyileştirilmesine` ve yeni bir özellik eklenmemesine karar verilmiştir.
+
+    - İlk haftanın sonunda tüm özelliklerin bitirilmesi ve kalan 2. haftanın `testing, sunum ve video` için kullanılmasına karar verilmiştir.
+
+    - Post ekleme ekranında fotoğraf seçmek için `flutter image_picker` kullanılması kararlaştırılmıştır.
+
+
+- **Sprint için Hikaye Puanı Hedefimiz/Tahminimiz**: 200 puan
+- **Puan Tamamlama Mantığı**: Sprint başına düşen hikaye puanlarının tahmini dağılımı şu şekilde gösterilebilir: ilk sprint(100 puan),ikinci sprint(170 puan), üçüncü sprint (200 puan) . Sprint 3 Backlog’unda bulunan tüm görevler ve ek işler tamamlanmıştır(215 puana ulaşılmıştır.)
+- **Sprint Değerlendirmesi:**
+  - Bu sprint için Engincan Backend kısmında sorumluluk alırken Enes Kaan ve Elif Güven frontend geliştirme için sorumluluk aldı Erdal ise Frontend ve Backend'i birleştiren ara fonksiyonlarla ilgilendi .Kullanıcı deneyimi ve arayüzü tasarımı Elif Öztürk tarafından yapılmıştır.
+
+  - Bu sprrintte en çok zorlandığımız kısım Profile Edit ve Favorites sayfalarını düzenlerken firebase ile ilgili ortaya çıkan buglardı.
+
+  - Frontend development görev dağılımı noktasında eşit görev dağılımı yapılmadığı ve bunun da takım dinamiğinde feature iptal etmeye kadar giden bir sürece evrildiği görülmüştür.
+
+  - Sonuç olarak 3. sprint için takım koordinasyonunu tam olarak sağlayamasak da bazı takım üyelerinin fazla mesai yapması sayesinde verilen zaman dahilinde tüm görevleri yetiştirdiğimiz söylenebilir.
+- **Sprint Retrospectifi:**
+  - Daily Scrum sıklığının az olması sonucu bazı takım üyelerinin görevlerinin ciddiyetinin farkına varmadığı ve proje takvimiyle ilgili yeterli bilgisi olmadığı sonucuna ulaşılmıştır.
+  
+  - Açık arttırma özelliğinin iş yükü açısından büyüklüğü göz önüne alındığında bu işe gereken önceliğin verilmediği ve son sprinte bırakılmaması gerektiği anlaşılmıştır.
+  
+  - Sprintin sonlarına teslim baskının artmasıyla beraber takım olarak üstün bir performans sergilenmiştir.
+  
+  - İlerleyen projelerde yukarıda bahsedilen daily scrum sıklığı ve görev bilinci gibi konulara odaklanılmasının takım verimini çok daha üst bir seviyeye çıkaracağı sonucuna ulaşılmıştır.
+
+  
+
 
 
 
