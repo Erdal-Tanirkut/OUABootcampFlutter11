@@ -17,13 +17,13 @@ class OnboardingScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              width: double.infinity,
-              height: 200, //desired height for the logo container
+              width: 304,
+              height: 205.77, //desired height for the logo container
               decoration: BoxDecoration(
                 color: Colors.grey[300],
                 borderRadius: BorderRadius.circular(20), //rounded corners
               ),
-              //child: Image.asset(''),
+              child: Image.asset('assets/images/onboarding.jpg'),
             ),
             const SizedBox(height: 40),
             const Text(
@@ -36,12 +36,12 @@ class OnboardingScreen extends StatelessWidget {
               style: TextStyle(
                   color: Color(0xFFB71C1C),
                   fontFamily: 'DMSans',
-                  fontSize: 36,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
             const Text(
-              'A haven where art enthusiasts converge.',
+              'Discover and connect with artists from\n all over the wrold.',
               style: TextStyle(color: Colors.black87, fontSize: 16),
               textAlign: TextAlign.center,
             ),
@@ -79,14 +79,14 @@ class OnboardingScreen extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ChangeNotifierProvider(
-                      create: (context) => SignInViewModel(),
-                      child: SignInView(),
-                    ),
-                  ),
-                );
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChangeNotifierProvider(
+                          create: (context) => SignInViewModel(),
+                          child: SignInView(),
+                        ),
+                      ),
+                    );
                   },
                   child: const Text('Sign in',
                       style: TextStyle(
