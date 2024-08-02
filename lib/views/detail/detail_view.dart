@@ -149,7 +149,7 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(width: 95,height: 2,),
+                  SizedBox(width:46 ,height: 2,),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(
@@ -170,10 +170,6 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
                       color: isFavorite ? Colors.red : Colors.grey,
                     ),
                     onPressed: _toggleFavorite,
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.mode_comment_outlined,color: Colors.grey,),
-                    onPressed: (){ print("basıldı");},
                   ),
                 ],
               ),
