@@ -13,28 +13,32 @@ class ProfileViewModel extends ChangeNotifier {
 
   final FirebaseDao _firebaseDao = FirebaseDao();
 
-  Future<void> fetchUserProfile() async {
+  void fetchUserProfile() {
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      // Kullanıcı bilgilerini getir
-      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+      FirebaseFirestore.instance
           .collection('users')
           .doc(user.uid)
-          .get();
-      Map<String, dynamic> userData =
-          userDoc.data() as Map<String, dynamic> ?? {};
-      _state.userName = userData.containsKey('username')
-          ? userData['username'] as String
-          : '';
-      _state.bio = userData.containsKey('bio') ? userData['bio'] as String : '';
-      notifyListeners();
+          .snapshots()
+          .listen((userDoc) {
+        Map<String, dynamic> userData =
+            userDoc.data() as Map<String, dynamic>? ?? {};
+        _state.userName = userData.containsKey('username')
+            ? userData['username'] as String
+            : '';
+        _state.bio =
+        userData.containsKey('bio') ? userData['bio'] as String : '';
+        _state.photoUrl = userData.containsKey('photoUrl')
+            ? userData['photoUrl'] as String
+            : '';
+        notifyListeners();
+      });
 
       // Kullanıcının gönderilerini getir
       _firebaseDao.readUserPosts(user.uid).listen((userPosts) {
         _state.userPosts = userPosts;
         _state.worksCount = userPosts.length;
         notifyListeners();
-        print(userPosts);
       });
     }
   }

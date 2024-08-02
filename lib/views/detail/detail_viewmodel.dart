@@ -9,7 +9,7 @@ class DetailViewModel extends ChangeNotifier {
   DetailViewModel({required this.videoId})
       : state = DetailViewModelState(
     videoController: YoutubePlayerController(
-      initialVideoId: videoId,
+      initialVideoId: videoId,  
       flags: YoutubePlayerFlags(
         autoPlay: true,
         mute: false,

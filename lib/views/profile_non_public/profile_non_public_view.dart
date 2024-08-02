@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:muse/firebase_dao.dart';
-import 'package:muse/views/my_works/my_works_view.dart';
-import 'package:muse/views/profile_non_public/profile_non_puclic_viewmodel.dart';
-import '../profile/profile_viewmodel.dart';
 import 'package:muse/views/profile/profile_view.dart';
+import 'package:muse/views/profile_edit/profile_edit_view.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/bottom_navigation_bar.dart';
-/* import '../profile_edit/profile_edit_viewmodel.dart';
-import '../profile_edit/profile_edit_view.dart';
-import 'profile_non_public_viewmodel.dart';
-*/
+import '../profile/profile_viewmodel.dart';
+import '../profile_edit/profile_edit_viewmodel.dart';
+import '../sign_in/sign_in_view.dart';
+import '../sign_in/sign_in_viewmodel.dart';
+import 'profile_non_puclic_viewmodel.dart';
+import '../../firebase_dao.dart';
+import '../my_works/my_works_view.dart';
 
 class ProfileNonPublicPage extends StatefulWidget {
   const ProfileNonPublicPage({super.key});
@@ -43,7 +43,15 @@ class _ProfileNonPublicPageState extends State<ProfileNonPublicPage> {
               icon: const Icon(Icons.logout, color: Color(0xFFB71C1C)),
               onPressed: () {
                 FirebaseDao().signOutUser();
-               
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChangeNotifierProvider(
+                      create: (context) => SignInViewModel(),
+                      child: SignInView(),
+                    ),
+                  ),
+                );
               },
             ),
           ],
@@ -52,7 +60,7 @@ class _ProfileNonPublicPageState extends State<ProfileNonPublicPage> {
           builder: (context, model, child) {
             return ListView.separated(
               padding: const EdgeInsets.all(16.0),
-              itemCount: 6,
+              itemCount: 5,
               itemBuilder: (context, index) {
                 return _buildListTile(index);
               },
@@ -73,14 +81,13 @@ class _ProfileNonPublicPageState extends State<ProfileNonPublicPage> {
         leading: const Icon(Icons.edit),
         title: const Text('Edit Profile'),
         trailing: const Icon(Icons.arrow_forward_ios, color: Color(0xFFB71C1C)),
-        onTap: () {/*
-          // Navigate to Edit Profile page
+        onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => ChangeNotifierProvider(
               create: (context) => ProfileEditViewModel(),
               child: ProfileEditPage(),
             ),
-          ));*/
+          ));
         },
       ),
       ListTile(
@@ -88,7 +95,7 @@ class _ProfileNonPublicPageState extends State<ProfileNonPublicPage> {
         title: const Text('My Sales'),
         trailing: const Icon(Icons.arrow_forward_ios, color: Color(0xFFB71C1C)),
         onTap: () {
-          //Navigate to My Sales
+          // Navigate to My Sales
         },
       ),
       ListTile(
@@ -96,19 +103,10 @@ class _ProfileNonPublicPageState extends State<ProfileNonPublicPage> {
         title: const Text('My Favourites'),
         trailing: const Icon(Icons.arrow_forward_ios, color: Color(0xFFB71C1C)),
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => MyWorksPage()),
-          );
-        },
-      ),
-      ListTile(
-        leading: const Icon(Icons.event),
-        title: const Text('Saved Events'),
-        trailing: const Icon(Icons.arrow_forward_ios, color: Color(0xFFB71C1C)),
-        onTap: () {
-          // Navigate to Saved Events page
+          // Navigate to My Favourites
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) =>  MyWorksPage(),
+          ));
         },
       ),
       ListTile(
@@ -116,15 +114,24 @@ class _ProfileNonPublicPageState extends State<ProfileNonPublicPage> {
         title: const Text('Settings'),
         trailing: const Icon(Icons.arrow_forward_ios, color: Color(0xFFB71C1C)),
         onTap: () {
-          // Navigate to Settings page
+          // Navigate to Settings
         },
       ),
       ListTile(
-        leading: const Icon(Icons.help, color: Color(0xFFB71C1C)),
-        title: const Text('Help'),
+        leading: const Icon(Icons.logout),
+        title: const Text('Log Out'),
         trailing: const Icon(Icons.arrow_forward_ios, color: Color(0xFFB71C1C)),
         onTap: () {
-          // Navigate to Help page
+          FirebaseDao().signOutUser();
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ChangeNotifierProvider(
+                create: (context) => SignInViewModel(),
+                child: SignInView(),
+              ),
+            ),
+          );
         },
       ),
     ];

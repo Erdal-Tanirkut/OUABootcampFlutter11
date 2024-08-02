@@ -103,6 +103,7 @@ class _ArtworkDetailPageState extends State<ArtworkDetailPage> {
           userData.savedPostIds.add(widget.post.postId);
         }
         await FirebaseDao().updateUserData(userData);
+
         setState(() {
           isFavorite = !isFavorite;
         });
