@@ -291,10 +291,10 @@ Muse her yaştan sanatseverlerin ve sanatçıların her türlü sanat eserini se
 
   <details>
     <summary><h3>Sprint 3 - Burndown Chart</h3></summary>
-    <img src="bootcampimages/Sprint2/burntdown_chart2.png" style="max-width: 100%; height: auto;">
+    <img src="bootcampimages/Sprint3/burntdownchart3.png" style="max-width: 100%; height: auto;">
   </details>
   <details>
-    <summary><h3>Sprint 2 - Günlük Scrumlar</h3></summary>
+    <summary><h3>Sprint 3 - Günlük Scrumlar</h3></summary>
     <img src="bootcampimages/Sprint3/Daily Scrum/daily_scrum3-1.png" style="max-width: 100%; height: auto;">
     <img src="bootcampimages/Sprint3/Daily Scrum/daily_scrum3-2.png" style="max-width: 100%; height: auto;">
     <img src="bootcampimages/Sprint3/Daily Scrum/daily_scrum3-3.png" style="max-width: 100%; height: auto;">
